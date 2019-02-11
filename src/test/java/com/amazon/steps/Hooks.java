@@ -28,7 +28,7 @@ public class Hooks {
 	@After(order = 1)
 	public void afterScenario(Scenario scenario) {
 		if (scenario.isFailed()) {
-			// .getTletIdrDao().insertTradeLetter(scenario.getId());
+			world.dbUtil.deleteUser();
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			try {
 				// This takes a screenshot from the driver at save it to the specified location

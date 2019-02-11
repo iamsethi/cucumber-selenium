@@ -1,9 +1,8 @@
 package com.amazon.interfaces;
 
 public interface DBUtil {
-
-	void insertUser();
-
-	void deleteUser();
+    
+    void insertUser();
+    void deleteUser();
 
 }
