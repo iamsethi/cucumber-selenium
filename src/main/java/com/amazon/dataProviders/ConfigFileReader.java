@@ -49,8 +49,6 @@ public class ConfigFileReader {
 			return DriverType.CHROME;
 		else if (browserName.equalsIgnoreCase("firefox"))
 			return DriverType.FIREFOX;
-		else if (browserName.equals("iexplorer"))
-			return DriverType.INTERNETEXPLORER;
 		else
 			throw new RuntimeException(
 					"Browser Name Key value in Configuration.properties is not matched : " + browserName);

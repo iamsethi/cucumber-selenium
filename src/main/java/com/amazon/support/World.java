@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 
 import com.amazon.dataProviders.ConfigFileReader;
 import com.amazon.dataProviders.JsonDataReader;
+import com.amazon.enums.DriverType;
+import com.amazon.manager.DriverManager;
+import com.amazon.manager.DriverManagerFactory;
 
 import cucumber.runtime.java.guice.ScenarioScoped;
 
@@ -11,7 +14,8 @@ import cucumber.runtime.java.guice.ScenarioScoped;
 // what will be the shared classes/variables and instantiate them only in here
 @ScenarioScoped
 public class World {
-	public WebDriver driver = new DriverFactory().getManager();
+	public DriverManager driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
+	public WebDriver driver = driverManager.getDriver();
 	public ConfigFileReader property = new ConfigFileReader();
 	public JsonDataReader data = new JsonDataReader();
 	public Wait wait = new Wait(driver);

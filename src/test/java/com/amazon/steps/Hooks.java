@@ -52,6 +52,6 @@ public class Hooks {
 
 	@After
 	public void afterScenario() {
-		world.driver.quit();
+		world.driverManager.quitDriver();
 	}
 }
