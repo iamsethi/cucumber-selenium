@@ -1,4 +1,4 @@
-package com.amazon.support;
+package com.amazon.world;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.Select;
 
-import com.amazon.support.World;
+import com.amazon.world.World;
 import com.google.inject.Inject;
 
 public class CheckoutPage extends BasePage {

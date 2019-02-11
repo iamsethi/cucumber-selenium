@@ -1,4 +1,4 @@
-package com.amazon.support;
+package com.amazon.world;
 
 import org.openqa.selenium.WebDriver;
 
@@ -18,9 +18,9 @@ import cucumber.runtime.java.guice.ScenarioScoped;
 @ScenarioScoped
 public class World {
 	public DriverManager driverManager = DriverManagerFactory.getManager(DriverType.CHROME); // Factory Pattern
-	public DBUtil dbUtil = new DBUtilProxy(TestEnvironment.valueOf("STAGE")); // Proxy Pattern
 	public WebDriver driver = driverManager.getDriver();
-	public ConfigFileReader property = new ConfigFileReader();
+	public DBUtil dbUtil = new DBUtilProxy(TestEnvironment.valueOf("QA")); // Proxy Pattern
+	public ConfigFileReader config = new ConfigFileReader();
 	public JsonDataReader data = new JsonDataReader();
 	public Wait wait = new Wait(driver);
 }

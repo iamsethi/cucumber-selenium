@@ -2,7 +2,7 @@ package com.amazon.pages;
 
 import org.openqa.selenium.support.PageFactory;
 
-import com.amazon.support.World;
+import com.amazon.world.World;
 
 public abstract class BasePage {
 	protected World world;

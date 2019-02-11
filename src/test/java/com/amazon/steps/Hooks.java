@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-import com.amazon.support.World;
+import com.amazon.world.World;
 import com.cucumber.listener.Reporter;
 import com.google.common.io.Files;
 import com.google.inject.Inject;
@@ -22,7 +22,7 @@ public class Hooks {
 	// Set the value of the properties in the support
 	@Before
 	public void beforeScenario() throws IOException {
-		world.property.getProperties();
+		world.config.getProperties();
 	}
 
 	@After(order = 1)

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-import com.amazon.support.World;
+import com.amazon.world.World;
 import com.google.inject.Inject;
 
 public class ProductListingPage extends BasePage {
