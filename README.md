@@ -1,4 +1,22 @@
+########################CLI####################################
 mvn clean test
+
+########################Factory Pattern in Creating WebDriver Instance####################################
+PROBLEM - 
+if (Browser.equals("chrome")) {
+    // logic to start the driver service
+    // then to create driver etc
+} else if (Browser.equals("phantomjs")) {
+
+}
+
+It might look like an easy solution. But it is really NOT. When we have to start/stop the Driver Service ourselves, the code becomes significantly larger and very difficult to maintain
+
+SOLUTION - 
+Test classes, as the users, should not really care how the drivers are actually created. What it needs is just a WebDriver instance to execute the given test case. So we come up with our own abstract class – DriverManager – which test classes could use to get a driver instance from it and use them in their tests.
+
+SUMMARY - 
+By using Factory Pattern, we completely hide the creational logic of the browser / service instances to the test classes. If we get a new requirement to add a new browser, say PhantomJS, should not be a big deal. We just need to create a PhantomJSDriverManager which extends DriverManager. [Ofcourse you have to add PhantomJS in DriverType]
 
 ########################Hooks####################################
 Hooks should be in step definition
