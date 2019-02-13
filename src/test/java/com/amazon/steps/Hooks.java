@@ -22,7 +22,9 @@ public class Hooks {
 	// Set the value of the properties in the support
 	@Before
 	public void beforeScenario() throws IOException {
-
+		if (world.config.isMAXIMIZE_BROWSER()) {
+			world.driver.manage().window().maximize();
+		}
 	}
 
 	@After(order = 1)
@@ -53,6 +55,8 @@ public class Hooks {
 
 	@After(order = 0)
 	public void afterScenario() {
-		world.driverManager.quitDriver();
+		if (world.config.isCLOSE_BROWSER()) {
+			world.driverManager.quitDriver();
+		}
 	}
 }

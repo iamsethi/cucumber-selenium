@@ -10,59 +10,75 @@ public class ConfigFileReader {
 	Logger log = Logger.getLogger(this.getClass());
 
 	@Inject
-	@Named("baseUrl")
-	private String url;
+	@Named("URL")
+	private String URL;
 
 	@Inject
-	@Named("environment")
-	private String envn;
+	@Named("TEST_ENVIRONMENT")
+	private String TEST_ENVIRONMENT;
+
+	public String getURL() {
+		return URL;
+	}
+
+	public String getTEST_ENVIRONMENT() {
+		return TEST_ENVIRONMENT;
+	}
+
+	public String getLOG_LEVEL() {
+		return LOG_LEVEL;
+	}
+
+	public String getBROWSER() {
+		return BROWSER;
+	}
+
+	public boolean isRECORD_VIDEO() {
+		return RECORD_VIDEO;
+	}
+
+	public boolean isCLOSE_BROWSER() {
+		return CLOSE_BROWSER;
+	}
+
+	public boolean isMAXIMIZE_BROWSER() {
+		return MAXIMIZE_BROWSER;
+	}
+
+	public boolean isUSE_GRID() {
+		return USE_GRID;
+	}
+
+	public boolean isLOCAL() {
+		return LOCAL;
+	}
 
 	@Inject
-	@Named("browser")
-	private String browser;
+	@Named("LOG_LEVEL")
+	private String LOG_LEVEL;
 
 	@Inject
-	@Named("windowMaximize")
-	private String windowMaximize;
+	@Named("BROWSER")
+	private String BROWSER;
 
 	@Inject
-	@Named("implicitlyWait")
-	private String implicitlyWait;
+	@Named("RECORD_VIDEO")
+	private boolean RECORD_VIDEO;
 
 	@Inject
-	@Named("envtype")
-	private String envtype;
+	@Named("CLOSE_BROWSER")
+	private boolean CLOSE_BROWSER;
 
 	@Inject
-	@Named("reportConfigPath")
-	private String reportConfigPath;
+	@Named("MAXIMIZE_BROWSER")
+	private boolean MAXIMIZE_BROWSER;
 
-	public String getUrl() {
-		return url;
-	}
+	@Inject
+	@Named("USE_GRID")
+	private boolean USE_GRID;
 
-	public String getEnvn() {
-		return envn;
-	}
-
-	public String getBrowser() {
-		return browser;
-	}
-
-	public String getWindowMaximize() {
-		return windowMaximize;
-	}
-
-	public String getImplicitlyWait() {
-		return implicitlyWait;
-	}
-
-	public String getEnvtype() {
-		return envtype;
-	}
-
-	public String getReportConfigPath() {
-		return reportConfigPath;
-	}
+	@Inject
+	@Named("LOCAL")
+	private boolean LOCAL;
 
 }

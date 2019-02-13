@@ -1,6 +1,5 @@
 package com.amazon.pages;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -9,7 +8,6 @@ import com.amazon.world.World;
 import com.google.inject.Inject;
 
 public class HomePage extends BasePage {
-	WebDriver driver;
 
 	@Inject
 	public HomePage(World world) {
@@ -28,7 +26,7 @@ public class HomePage extends BasePage {
 	}
 
 	public void navigateTo_HomePage() {
-		world.driver.get(world.config.getUrl());
+		world.driver.get(world.config.getURL());
 	}
 
 }
