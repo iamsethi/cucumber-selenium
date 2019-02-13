@@ -1,11 +1,10 @@
 package com.amazon.database.proxy;
 
-import com.amazon.enums.TestEnvironment;
 import com.amazon.interfaces.IDBProxy;
 
 class DBUtilImpl implements IDBProxy {
 
-	public DBUtilImpl(TestEnvironment environment) {
+	public DBUtilImpl() {
 		// DB Connection
 	}
 

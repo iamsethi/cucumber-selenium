@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import com.amazon.dataProviders.ConfigFileReader;
 import com.amazon.dataProviders.ConfigModule;
 import com.amazon.dataProviders.JsonDataReader;
-import com.amazon.database.proxy.DBUtilProxy;
+import com.amazon.database.proxy.DBUtil;
 import com.amazon.databases.DBModule;
 import com.amazon.databases.MYSQLJDBCConnection;
 import com.amazon.interfaces.IDBProxy;
@@ -21,9 +21,9 @@ import com.google.inject.name.Names;
 @Singleton
 public class World {
 	// Bind Chromedriver/Firefoxdriver to drivermanager
-	Injector driverInjector = Guice.createInjector(new DriverModule());
+	Injector driverModule = Guice.createInjector(new DriverModule());
 	// Pass bowser name
-	public DriverManager driverManager = driverInjector
+	public DriverManager driverManager = driverModule
 			.getInstance(Key.get(DriverManager.class, Names.named("Firefox")));
 	public WebDriver driver = driverManager.getDriver();
 
@@ -36,10 +36,10 @@ public class World {
 	public ConfigFileReader config = config_properties.getInstance(ConfigFileReader.class);
 
 	// Initialize DB properties file
-	Injector db_properties = Guice.createInjector(new DBModule());
+	Injector db_module = Guice.createInjector(new DBModule());
 	// Use above key value in DBConnection class
-	public MYSQLJDBCConnection mySQLConnection = db_properties.getInstance(MYSQLJDBCConnection.class);
+	public MYSQLJDBCConnection sql = db_module.getInstance(MYSQLJDBCConnection.class);
 	// Proxy Pattern + Use above K,V in constructor of DBUtilProxy
-	public IDBProxy dbUtil = db_properties.getInstance(DBUtilProxy.class);
+	public IDBProxy dbUtil = db_module.getInstance(DBUtil.class);
 
 }

@@ -26,19 +26,29 @@ public class MYSQLJDBCConnection {
 	@Named("idr.db.url")
 	private String db_url;
 
-	public void getConnection() throws Exception {
-		// dataBaseHelper.executeQuery(sqlQuery);
+	@Inject
+	@Named("database.driver")
+	private String driver;
 
-		String host = "localhost";
-		String port = "3306";
-		Connection con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/db_example", "root",
-				"root");
-		Statement s = con.createStatement();
+	@Inject
+	@Named("select.all.sql")
+	private String select_query;
 
-		ResultSet rs = s.executeQuery("SELECT * FROM TRADE_LETTER;");
-		while (rs.next()) {
-			System.out.println(rs.getString("TRADE_LETTER_ID"));
+	public void getConnection() {
+		// dataBaseHelper.executeQuery(select_query);
+		try {
+			Class.forName(driver);
+			Connection con = DriverManager.getConnection(db_url, user, pswd);
+			Statement s = con.createStatement();
+
+			ResultSet rs = s.executeQuery(select_query);
+			while (rs.next()) {
+				System.out.println(rs.getString("TRADE_LETTER_ID"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
 	}
 
 }

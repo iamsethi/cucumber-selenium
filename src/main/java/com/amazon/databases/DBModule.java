@@ -13,9 +13,12 @@ public class DBModule extends AbstractModule {
 	protected void configure() {
 		bind(IDataBaseHelper.class).to(DBHelper.class);
 		try {
-			Properties props = new Properties();
-			props.load(getClass().getClassLoader().getResourceAsStream("db.properties"));
-			Names.bindProperties(binder(), props);
+			Properties prop1 = new Properties();
+			Properties prop2 = new Properties();
+			prop1.load(getClass().getClassLoader().getResourceAsStream("db.properties"));
+			prop2.load(getClass().getClassLoader().getResourceAsStream("application-sql.properties"));
+			Names.bindProperties(binder(), prop1);
+			Names.bindProperties(binder(), prop2);
 		} catch (IOException e) {
 			// log.error("Could not load config: ", e);
 			System.exit(1);

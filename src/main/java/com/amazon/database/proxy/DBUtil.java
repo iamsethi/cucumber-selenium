@@ -9,7 +9,7 @@ import com.amazon.interfaces.IDBProxy;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-public class DBUtilProxy implements IDBProxy {
+public class DBUtil implements IDBProxy {
 
 	private IDBProxy dbUtil;
 	private static final List<TestEnvironment> restrictEnvironmentList;
@@ -22,9 +22,9 @@ public class DBUtilProxy implements IDBProxy {
 	}
 
 	@Inject
-	public DBUtilProxy(@Named("test.environment") String testEnvironment) {
+	public DBUtil(@Named("test.environment") String testEnvironment) {
 		if (!restrictEnvironmentList.contains(TestEnvironment.valueOf(testEnvironment))) {
-			dbUtil = new DBUtilImpl(TestEnvironment.valueOf(testEnvironment));
+			dbUtil = new DBUtilImpl();
 		}
 	}
 
