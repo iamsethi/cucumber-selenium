@@ -30,7 +30,6 @@ public class Hooks {
 	@After(order = 1)
 	public void afterScenario(Scenario scenario) {
 		if (scenario.isFailed()) {
-			world.dbService.getUser();
 			world.dbUtil.deleteUser();
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			try {

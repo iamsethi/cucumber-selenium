@@ -5,22 +5,14 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import com.amazon.interfaces.DataBaseHelper;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 public class MYSQLJDBCConnection {
 
-	public String getUser() {
-		return user;
-	}
-
-	public String getPswd() {
-		return pswd;
-	}
-
-	public String getDb_url() {
-		return db_url;
-	}
+	@Inject
+	private DataBaseHelper dataBaseHelper;
 
 	@Inject
 	@Named("idr.db.username")
@@ -34,7 +26,9 @@ public class MYSQLJDBCConnection {
 	@Named("idr.db.url")
 	private String db_url;
 
-	public static void getConnection() throws Exception {
+	public void getConnection() throws Exception {
+		// dataBaseHelper.executeQuery(sqlQuery);
+
 		String host = "localhost";
 		String port = "3306";
 		Connection con = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/db_example", "root",
