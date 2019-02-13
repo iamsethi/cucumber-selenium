@@ -1,11 +1,11 @@
 {
 	"Environments": {
-		"ITV1": [
+		"DEV": [
 			"url: https://www.amazon.com",
 			"tbx_username: testbrianlee@gmail.com",
 			"tbx_password: Login@123"
 		],
-		"ITV2": [
+		"QA": [
 			"url: https://www.amazon.com",
 			"tbx_username: testbrianlee@gmail.com",
 			"tbx_password: Login@123"

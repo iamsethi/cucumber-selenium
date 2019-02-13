@@ -22,12 +22,13 @@ public class Hooks {
 	// Set the value of the properties in the support
 	@Before
 	public void beforeScenario() throws IOException {
-		world.config.getProperties();
+
 	}
 
 	@After(order = 1)
 	public void afterScenario(Scenario scenario) {
 		if (scenario.isFailed()) {
+			world.dbService.getUser();
 			world.dbUtil.deleteUser();
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			try {
@@ -50,7 +51,7 @@ public class Hooks {
 		}
 	}
 
-	@After
+	@After(order = 0)
 	public void afterScenario() {
 		world.driverManager.quitDriver();
 	}

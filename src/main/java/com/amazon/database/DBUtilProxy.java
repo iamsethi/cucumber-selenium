@@ -6,6 +6,8 @@ import java.util.Objects;
 
 import com.amazon.enums.TestEnvironment;
 import com.amazon.interfaces.DBUtil;
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 public class DBUtilProxy implements DBUtil {
 
@@ -19,9 +21,10 @@ public class DBUtilProxy implements DBUtil {
 		restrictEnvironmentList.add(TestEnvironment.STAGING);
 	}
 
-	public DBUtilProxy(TestEnvironment testEnvironment) {
-		if (!restrictEnvironmentList.contains(testEnvironment)) {
-			dbUtil = new DBUtilImpl(testEnvironment);
+	@Inject
+	public DBUtilProxy(@Named("test.environment") String testEnvironment) {
+		if (!restrictEnvironmentList.contains(TestEnvironment.valueOf(testEnvironment))) {
+			dbUtil = new DBUtilImpl(TestEnvironment.valueOf(testEnvironment));
 		}
 	}
 

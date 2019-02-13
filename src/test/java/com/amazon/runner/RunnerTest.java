@@ -21,7 +21,7 @@ public class RunnerTest {
 
 	@BeforeClass
 	public static void setUp() throws Exception {
-		JsonDataReader.registerEnvironment("ITV1");
+		JsonDataReader.registerEnvironment("QA");
 		JsonDataReader.initializeJSON();
 	}
 

@@ -1,84 +1,68 @@
 package com.amazon.dataProviders;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
 import org.apache.log4j.Logger;
 
-import com.amazon.enums.DriverType;
-import com.amazon.enums.EnvironmentType;
+import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 public class ConfigFileReader {
-	private String baseUrl;
-	private Properties properties;
 
 	Logger log = Logger.getLogger(this.getClass());
 
-	public void getProperties() throws IOException {
-		properties = new Properties();
-		InputStream inputStream = getClass().getClassLoader().getResourceAsStream("config.properties");
-		properties.load(inputStream);
+	@Inject
+	@Named("baseUrl")
+	private String url;
+
+	@Inject
+	@Named("environment")
+	private String envn;
+
+	@Inject
+	@Named("browser")
+	private String browser;
+
+	@Inject
+	@Named("windowMaximize")
+	private String windowMaximize;
+
+	@Inject
+	@Named("implicitlyWait")
+	private String implicitlyWait;
+
+	@Inject
+	@Named("envtype")
+	private String envtype;
+
+	@Inject
+	@Named("reportConfigPath")
+	private String reportConfigPath;
+
+	public String getUrl() {
+		return url;
 	}
 
-	public long getImplicitlyWait() {
-		String implicitlyWait = properties.getProperty("implicitlyWait");
-		if (implicitlyWait != null) {
-			try {
-				return Long.parseLong(implicitlyWait);
-			} catch (NumberFormatException e) {
-				throw new RuntimeException("Not able to parse value : " + implicitlyWait + " in to Long");
-			}
-		}
-		return 30;
+	public String getEnvn() {
+		return envn;
 	}
 
-	public String getApplicationUrl() {
-		this.baseUrl = properties.getProperty("baseUrl");
-		log.info(baseUrl);
-		if (baseUrl != null) {
-			return baseUrl;
-		} else
-			throw new RuntimeException(
-					"Application Url not specified in the Configuration.properties file for the Key:url");
+	public String getBrowser() {
+		return browser;
 	}
 
-	public DriverType getBrowser() {
-		String browserName = properties.getProperty("browser");
-		if (browserName == null || browserName.equals("chrome"))
-			return DriverType.CHROME;
-		else if (browserName.equalsIgnoreCase("firefox"))
-			return DriverType.FIREFOX;
-		else
-			throw new RuntimeException(
-					"Browser Name Key value in Configuration.properties is not matched : " + browserName);
+	public String getWindowMaximize() {
+		return windowMaximize;
 	}
 
-	public String getTestDataResourcePath() {
-		String testDataResourcePath = properties.getProperty("testDataResourcePath");
-		if (testDataResourcePath != null)
-			return testDataResourcePath;
-		else
-			throw new RuntimeException(
-					"Test Data Resource Path not specified in the Configuration.properties file for the Key:testDataResourcePath");
+	public String getImplicitlyWait() {
+		return implicitlyWait;
 	}
 
-	public EnvironmentType getEnvironment() {
-		String environmentName = properties.getProperty("environment");
-		if (environmentName == null || environmentName.equalsIgnoreCase("local"))
-			return EnvironmentType.LOCAL;
-		else if (environmentName.equals("remote"))
-			return EnvironmentType.REMOTE;
-		else
-			throw new RuntimeException(
-					"Environment Type Key value in Configuration.properties is not matched : " + environmentName);
+	public String getEnvtype() {
+		return envtype;
 	}
 
-	public Boolean getBrowserWindowSize() {
-		String windowSize = properties.getProperty("windowMaximize");
-		if (windowSize != null)
-			return Boolean.valueOf(windowSize);
-		return true;
+	public String getReportConfigPath() {
+		return reportConfigPath;
 	}
 
 }
