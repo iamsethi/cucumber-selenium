@@ -1,18 +1,18 @@
-package com.amazon.database;
+package com.amazon.databases;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.amazon.interfaces.DataBaseHelper;
+import com.amazon.interfaces.IDataBaseHelper;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 public class MYSQLJDBCConnection {
 
 	@Inject
-	private DataBaseHelper dataBaseHelper;
+	private IDataBaseHelper dataBaseHelper;
 
 	@Inject
 	@Named("idr.db.username")

@@ -1,6 +1,6 @@
 package com.amazon.interfaces;
 
-public interface DBUtil {
+public interface IDBProxy {
     
     void insertUser();
     void deleteUser();

@@ -1,14 +1,12 @@
-package com.amazon.database;
+package com.amazon.database.proxy;
 
 import com.amazon.enums.TestEnvironment;
-import com.amazon.interfaces.DBUtil;
+import com.amazon.interfaces.IDBProxy;
 
-class DBUtilImpl implements DBUtil {
-
-	MYSQLJDBCConnection dbConnection;
+class DBUtilImpl implements IDBProxy {
 
 	public DBUtilImpl(TestEnvironment environment) {
-		// DB connection
+		// DB Connection
 	}
 
 	@Override

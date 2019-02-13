@@ -1,17 +1,17 @@
-package com.amazon.database;
+package com.amazon.database.proxy;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import com.amazon.enums.TestEnvironment;
-import com.amazon.interfaces.DBUtil;
+import com.amazon.interfaces.IDBProxy;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-public class DBUtilProxy implements DBUtil {
+public class DBUtilProxy implements IDBProxy {
 
-	private DBUtil dbUtil;
+	private IDBProxy dbUtil;
 	private static final List<TestEnvironment> restrictEnvironmentList;
 
 	// restrict DB access for the below environments

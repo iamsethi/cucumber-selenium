@@ -1,4 +1,4 @@
-package com.amazon.database;
+package com.amazon.databases;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -11,9 +11,9 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.util.LinkedHashMap;
 
-import com.amazon.interfaces.DataBaseHelper;
+import com.amazon.interfaces.IDataBaseHelper;
 
-public class MySqlDbHelper implements DataBaseHelper,Closeable {
+public class DBHelper implements IDataBaseHelper,Closeable {
 
 	private String connString;
 	
@@ -27,7 +27,7 @@ public class MySqlDbHelper implements DataBaseHelper,Closeable {
 	}
 	
 	@Override
-	public DataBaseHelper setConnectionString(String connString) {
+	public IDataBaseHelper setConnectionString(String connString) {
 		this.connString = connString;
 		return this;
 	}

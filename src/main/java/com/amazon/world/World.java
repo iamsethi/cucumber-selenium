@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import com.amazon.dataProviders.ConfigFileReader;
 import com.amazon.dataProviders.ConfigModule;
 import com.amazon.dataProviders.JsonDataReader;
-import com.amazon.database.MYSQLJDBCConnection;
-import com.amazon.database.DBModule;
-import com.amazon.database.DBUtilProxy;
-import com.amazon.interfaces.DBUtil;
+import com.amazon.database.proxy.DBUtilProxy;
+import com.amazon.databases.DBModule;
+import com.amazon.databases.MYSQLJDBCConnection;
+import com.amazon.interfaces.IDBProxy;
 import com.amazon.manager.DriverManager;
 import com.amazon.manager.DriverModule;
 import com.google.inject.Guice;
@@ -31,15 +31,15 @@ public class World {
 	public Wait wait = new Wait(driver);
 
 	// Initialize config properties file
-	Injector configInjector = Guice.createInjector(new ConfigModule());
+	Injector config_properties = Guice.createInjector(new ConfigModule());
 	// Use above key value in ConfigFileReader class
-	public ConfigFileReader config = configInjector.getInstance(ConfigFileReader.class);
+	public ConfigFileReader config = config_properties.getInstance(ConfigFileReader.class);
 
 	// Initialize DB properties file
-	Injector dbInjector = Guice.createInjector(new DBModule());
+	Injector db_properties = Guice.createInjector(new DBModule());
 	// Use above key value in DBConnection class
-	public MYSQLJDBCConnection dbService = dbInjector.getInstance(MYSQLJDBCConnection.class);
+	public MYSQLJDBCConnection mySQLConnection = db_properties.getInstance(MYSQLJDBCConnection.class);
 	// Proxy Pattern + Use above K,V in constructor of DBUtilProxy
-	public DBUtil dbUtil = dbInjector.getInstance(DBUtilProxy.class);
+	public IDBProxy dbUtil = db_properties.getInstance(DBUtilProxy.class);
 
 }

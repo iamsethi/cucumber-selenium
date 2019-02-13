@@ -3,9 +3,9 @@ package com.amazon.interfaces;
 import java.sql.SQLException;
 import java.util.LinkedHashMap;
 
-public interface DataBaseHelper {
+public interface IDataBaseHelper {
 
-	public DataBaseHelper setConnectionString(String connString);
+	public IDataBaseHelper setConnectionString(String connString);
 	
 	public int executeUpdate(String sqlQuery) throws ClassNotFoundException, SQLException;
 	
