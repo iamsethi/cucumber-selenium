@@ -17,7 +17,7 @@ import com.google.inject.Key;
 import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 
-//Guice-constructor of class will be mapped with configure method  -  IMP
+//Guice-constructor[new className()] of class will be mapped with configure method  -  IMP
 @Singleton
 public class World {
 	// Bind Chromedriver/Firefoxdriver to drivermanager

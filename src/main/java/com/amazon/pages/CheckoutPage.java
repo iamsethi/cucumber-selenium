@@ -2,7 +2,6 @@ package com.amazon.pages;
 
 import java.util.List;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
@@ -13,7 +12,6 @@ import com.amazon.world.World;
 import com.google.inject.Inject;
 
 public class CheckoutPage extends BasePage {
-	WebDriver driver;
 
 	@Inject
 	private World world;
