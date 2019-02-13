@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 import com.amazon.dataProviders.ConfigFileReader;
 import com.amazon.dataProviders.ConfigModule;
 import com.amazon.dataProviders.JsonDataReader;
-import com.amazon.database.DBConnection;
+import com.amazon.database.MYSQLJDBCConnection;
 import com.amazon.database.DBModule;
 import com.amazon.database.DBUtilProxy;
 import com.amazon.interfaces.DBUtil;
@@ -38,7 +38,7 @@ public class World {
 	// Initialize DB properties file
 	Injector dbInjector = Guice.createInjector(new DBModule());
 	// Use above key value in DBConnection class
-	public DBConnection dbService = dbInjector.getInstance(DBConnection.class);
+	public MYSQLJDBCConnection dbService = dbInjector.getInstance(MYSQLJDBCConnection.class);
 	// Proxy Pattern + Use above K,V in constructor of DBUtilProxy
 	public DBUtil dbUtil = dbInjector.getInstance(DBUtilProxy.class);
 

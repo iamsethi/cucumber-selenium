@@ -5,7 +5,7 @@ import com.amazon.interfaces.DBUtil;
 
 class DBUtilImpl implements DBUtil {
 
-	DBConnection dbConnection;
+	MYSQLJDBCConnection dbConnection;
 
 	public DBUtilImpl(TestEnvironment environment) {
 		// DB connection
