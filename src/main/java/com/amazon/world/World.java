@@ -23,8 +23,7 @@ public class World {
 	// Bind Chromedriver/Firefoxdriver to drivermanager
 	Injector driverModule = Guice.createInjector(new DriverModule());
 	// Pass bowser name
-	public DriverManager driverManager = driverModule
-			.getInstance(Key.get(DriverManager.class, Names.named("Firefox")));
+	public DriverManager driverManager = driverModule.getInstance(Key.get(DriverManager.class, Names.named("Firefox")));
 	public WebDriver driver = driverManager.getDriver();
 
 	public JsonDataReader data = new JsonDataReader();
@@ -35,7 +34,8 @@ public class World {
 	// Use above key value in ConfigFileReader class
 	public ConfigFileReader config = config_properties.getInstance(ConfigFileReader.class);
 
-	// Initialize DB properties file
+	// Initialize db.properties in src/test/resources and application-sql.properties
+	// in src/main/resources
 	Injector db_module = Guice.createInjector(new DBModule());
 	// Use above key value in DBConnection class
 	public MYSQLJDBCConnection sql = db_module.getInstance(MYSQLJDBCConnection.class);

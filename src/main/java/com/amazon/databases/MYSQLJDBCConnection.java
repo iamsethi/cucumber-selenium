@@ -35,8 +35,9 @@ public class MYSQLJDBCConnection {
 	private String select_query;
 
 	public void getConnection() {
-		// dataBaseHelper.executeQuery(select_query);
 		try {
+			dataBaseHelper.setConnectionString(db_url);
+
 			Class.forName(driver);
 			Connection con = DriverManager.getConnection(db_url, user, pswd);
 			Statement s = con.createStatement();

@@ -28,5 +28,8 @@ public class RunnerTest {
 	@AfterClass
 	public static void writeExtentReport() {
 		Reporter.loadXMLConfig(new File(System.getProperty("user.dir") + "/src/test/resources/extent-config.xml"));
+		Reporter.setSystemInfo("user", System.getProperty("user.name"));
+		Reporter.setSystemInfo("os", System.getProperty("os.name"));
+		Reporter.setTestRunnerOutput("Sample test runner output message");
 	}
 }

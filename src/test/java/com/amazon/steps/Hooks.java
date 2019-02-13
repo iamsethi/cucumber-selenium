@@ -3,12 +3,13 @@ package com.amazon.steps;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import com.amazon.world.World;
 import com.cucumber.listener.Reporter;
-import com.google.common.io.Files;
 import com.google.inject.Inject;
 
 import cucumber.api.Scenario;
@@ -43,10 +44,12 @@ public class Hooks {
 						+ screenshotName + ".png");
 
 				// Copy taken screenshot from source location to destination location
-				Files.copy(sourcePath, destinationPath);
+				FileUtils.copyFile(sourcePath, destinationPath);
 
 				// This attach the specified screenshot to the test
 				Reporter.addScreenCaptureFromPath(destinationPath.toString());
+			} catch (NoSuchWindowException e) {
+
 			} catch (IOException e) {
 			}
 		}

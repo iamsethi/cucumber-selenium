@@ -14,7 +14,7 @@ public class SignInPage extends BasePage {
 		super(world);
 	}
 
-	@FindBy(how = How.NAME, using = "email")
+	@FindBy(how = How.NAME, using = "emai")
 	public WebElement txtbx_Email;
 
 	@FindBy(how = How.NAME, using = "password")
