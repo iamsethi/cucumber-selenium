@@ -14,7 +14,7 @@ public class SignInPage extends BasePage {
 		super(world);
 	}
 
-	@FindBy(how = How.NAME, using = "emai")
+	@FindBy(how = How.NAME, using = "email")
 	public WebElement txtbx_Email;
 
 	@FindBy(how = How.NAME, using = "password")
@@ -35,6 +35,7 @@ public class SignInPage extends BasePage {
 	}
 
 	public void perform_SignIn() {
+
 		enter_Email("testbrianlee@gmail.com");
 		// txtbx_Continue.click();
 		enter_Password("Login@123");

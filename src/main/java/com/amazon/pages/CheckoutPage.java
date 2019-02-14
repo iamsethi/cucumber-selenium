@@ -8,13 +8,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.Select;
 
+import com.amazon.dataProviders.JsonDataReader;
 import com.amazon.world.World;
 import com.google.inject.Inject;
 
 public class CheckoutPage extends BasePage {
 
 	@Inject
-	private World world;
+	private JsonDataReader data;
 
 	@Inject
 	public CheckoutPage(World world) {
@@ -130,7 +131,7 @@ public class CheckoutPage extends BasePage {
 	}
 
 	public void fill_PersonalDetails() {
-		world.data.fillAllFields(this);
+		data.fillAllFields(this);
 	}
 
 }

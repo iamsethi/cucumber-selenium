@@ -20,14 +20,19 @@ import com.google.inject.name.Names;
 //Guice-constructor[new className()] of class will be mapped with configure method  -  IMP
 @Singleton
 public class World {
+
+	World() {
+		System.out.println("I am called from World constructor");
+
+	}
+
 	// Bind Chromedriver/Firefoxdriver to drivermanager
 	Injector driverModule = Guice.createInjector(new DriverModule());
 	// Pass bowser name
 	public DriverManager driverManager = driverModule.getInstance(Key.get(DriverManager.class, Names.named("Firefox")));
 	public WebDriver driver = driverManager.getDriver();
 
-	public JsonDataReader data = new JsonDataReader();
-	public Wait wait = new Wait(driver);
+	public JsonDataReader data;
 
 	// Initialize config properties file
 	Injector config_properties = Guice.createInjector(new ConfigModule());
