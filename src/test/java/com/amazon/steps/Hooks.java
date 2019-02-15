@@ -27,7 +27,6 @@ public class Hooks {
 	// Set the value of the properties in the support
 	@Before
 	public void beforeScenario() throws IOException {
-		world.driver.get(world.config.getURL());
 		if (world.config.isMAXIMIZE_BROWSER()) {
 			world.driver.manage().window().maximize();
 		}
