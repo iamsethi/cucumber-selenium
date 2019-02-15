@@ -1,8 +1,9 @@
-package com.amazon.databases;
+package com.amazon.module;
 
 import java.io.IOException;
 import java.util.Properties;
 
+import com.amazon.databases.DBHelper;
 import com.amazon.interfaces.IDataBaseHelper;
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;

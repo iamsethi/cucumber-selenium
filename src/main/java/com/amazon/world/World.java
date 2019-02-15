@@ -3,14 +3,14 @@ package com.amazon.world;
 import org.openqa.selenium.WebDriver;
 
 import com.amazon.dataProviders.ConfigFileReader;
-import com.amazon.dataProviders.ConfigModule;
 import com.amazon.dataProviders.JsonDataReader;
 import com.amazon.database.proxy.DBUtil;
-import com.amazon.databases.DBModule;
 import com.amazon.databases.MYSQLJDBCConnection;
 import com.amazon.interfaces.IDBProxy;
 import com.amazon.manager.DriverManager;
-import com.amazon.manager.DriverModule;
+import com.amazon.module.ConfigModule;
+import com.amazon.module.DBModule;
+import com.amazon.module.DriverModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Key;
@@ -20,11 +20,6 @@ import com.google.inject.name.Names;
 //Guice-constructor[new className()] of class will be mapped with configure method  -  IMP
 @Singleton
 public class World {
-
-	World() {
-		System.out.println("I am called from World constructor");
-
-	}
 
 	// Bind Chromedriver/Firefoxdriver to drivermanager
 	Injector driverModule = Guice.createInjector(new DriverModule());

@@ -1,4 +1,4 @@
-package com.amazon.dataProviders;
+package com.amazon.module;
 
 import java.io.IOException;
 import java.util.Properties;
