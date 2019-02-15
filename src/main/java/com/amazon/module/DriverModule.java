@@ -2,12 +2,11 @@ package com.amazon.module;
 
 import org.openqa.selenium.WebDriver;
 
-import com.amazon.manager.ChromeDriverManager;
-import com.amazon.manager.DriverManager;
+import com.amazon.driver.ChromeDriverManager;
+import com.amazon.driver.DriverManager;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Scopes;
-import com.google.inject.name.Names;
 
 public class DriverModule extends AbstractModule {
 
@@ -17,18 +16,9 @@ public class DriverModule extends AbstractModule {
 
 	}
 
-	/*
-	 * bind(DriverManager.class) .annotatedWith(Chrome.class)
-	 * .to(ChromeDriverManager.class); is same as
-	 * 
-	 * @Provides
-	 * 
-	 * @Chrome public DriverManager provideDriverManager() { return new
-	 * ChromeDriverManager(); }
-	 */
-
 	@Provides
 	public WebDriver getDriver(DriverManager driverManager) {
 		return driverManager.getDriver();
 	}
+
 }

@@ -21,8 +21,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 public class JsonDataReader {
+	private Logger log = Logger.getLogger(this.getClass());
 
-	private static Logger log = Logger.getLogger(JsonDataReader.class);
+	JsonDataReader() {
+		log.info(environments);
+		log.info("I am constructor of : " + this.getClass().getSimpleName());
+	}
+
 	private static String dataFile = System.getProperty("user.dir") + File.separator + "src/test/resources/sfa.json";
 	static Gson gson = new Gson();
 	private static JsonObject jsonObject;
@@ -33,7 +38,6 @@ public class JsonDataReader {
 		try (FileReader reader = new FileReader(dataFile)) {
 			jsonObject = gson.fromJson(new FileReader(dataFile), JsonObject.class);
 			environments = jsonObject.getAsJsonObject("Environments");
-			log.info(environments.getAsJsonArray(envn));
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

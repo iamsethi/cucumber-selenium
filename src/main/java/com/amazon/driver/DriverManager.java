@@ -1,4 +1,4 @@
-package com.amazon.manager;
+package com.amazon.driver;
 
 import org.openqa.selenium.WebDriver;
 

@@ -1,6 +1,12 @@
+@ScenarioScoped dependecy that is injected by Cucumber into your step classes are always re-created for each scenario. Your job is to make sure you dont have any static fields in the injected dependency. Static fields belongs to the class and not the instance so they are not cleared for each new instance
+
+@Singleton - Then only 1 driver will be created for entire suite
+
 ########################CLI####################################
 mvn clean test
 
+########################Logger####################################
+Logger log = Logger.getLogger(this.getClass());
 ########################Factory Pattern in Creating WebDriver Instance USAGE -> world.driver####################################
 PROBLEM - 
 if (Browser.equals("chrome")) {

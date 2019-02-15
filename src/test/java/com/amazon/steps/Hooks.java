@@ -8,6 +8,7 @@ import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+import com.amazon.driver.DriverManager;
 import com.amazon.world.World;
 import com.cucumber.listener.Reporter;
 import com.google.inject.Inject;
@@ -20,9 +21,13 @@ public class Hooks {
 	@Inject
 	private World world;
 
+	@Inject
+	public DriverManager driverManager;
+
 	// Set the value of the properties in the support
 	@Before
 	public void beforeScenario() throws IOException {
+		world.driver.get(world.config.getURL());
 		if (world.config.isMAXIMIZE_BROWSER()) {
 			world.driver.manage().window().maximize();
 		}
@@ -58,7 +63,7 @@ public class Hooks {
 	@After(order = 0)
 	public void afterScenario() {
 		if (world.config.isCLOSE_BROWSER()) {
-			world.driver.quit();
+			driverManager.quitDriver();
 		}
 	}
 }
