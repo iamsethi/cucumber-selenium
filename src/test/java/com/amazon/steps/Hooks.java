@@ -31,7 +31,7 @@ public class Hooks {
 	@After(order = 1)
 	public void afterScenario(Scenario scenario) {
 		if (scenario.isFailed()) {
-			world.dbUtil.deleteUser();
+			world.db.deleteUser();
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			try {
 				// This takes a screenshot from the driver at save it to the specified location
@@ -58,7 +58,7 @@ public class Hooks {
 	@After(order = 0)
 	public void afterScenario() {
 		if (world.config.isCLOSE_BROWSER()) {
-			world.driverManager.quitDriver();
+			world.driver.quit();
 		}
 	}
 }

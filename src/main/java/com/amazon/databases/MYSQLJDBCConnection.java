@@ -5,11 +5,22 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import com.amazon.interfaces.IDBProxy;
 import com.amazon.interfaces.IDataBaseHelper;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-public class MYSQLJDBCConnection {
+public class MYSQLJDBCConnection implements IDBProxy {
+
+	@Override
+	public void insertUser() {
+		System.out.println("inserting new user");
+	}
+
+	@Override
+	public void deleteUser() {
+		System.out.println("deleting user");
+	}
 
 	@Inject
 	private IDataBaseHelper dataBaseHelper;

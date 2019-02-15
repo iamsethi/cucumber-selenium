@@ -27,7 +27,7 @@ public class HomePage extends BasePage {
 
 	public void navigateTo_HomePage() {
 		world.driver.get(world.config.getURL());
-		world.sql.getConnection();
+		world.db.getConnection();
 	}
 
 }

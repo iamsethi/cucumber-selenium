@@ -1,4 +1,4 @@
-package com.amazon.database.proxy;
+package com.amazon.databases;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class DBUtil implements IDBProxy {
 	@Inject
 	public DBUtil(@Named("test.environment") String testEnvironment) {
 		if (!restrictEnvironmentList.contains(TestEnvironment.valueOf(testEnvironment))) {
-			dbUtil = new DBUtilImpl();
+			dbUtil = new MYSQLJDBCConnection();
 		}
 	}
 
