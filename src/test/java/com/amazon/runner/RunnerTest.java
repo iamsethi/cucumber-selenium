@@ -14,7 +14,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 
-@CucumberOptions(features = "classpath:features", tags = { "@regression" }, glue = { "com.amazon.steps" }, plugin = {
+@CucumberOptions(features = "classpath:features", tags = { "@tweet" }, glue = { "com.amazon.steps" }, plugin = {
 		"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html" }, monochrome = true)
 
 public class RunnerTest {

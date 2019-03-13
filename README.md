@@ -2,6 +2,9 @@
 
 @Singleton - Then only 1 driver will be created for entire suite
 
+########################scribejava-apis####################################
+
+java.lang.NoClassDefFoundError: com/github/scribejava/core/model/Abstract Request
 
 ########################Rakuten Amazon Item search API####################################
 https://scrapehero-amazon-product-info-v1.p.rapidapi.com/product-details?asin=1483359468

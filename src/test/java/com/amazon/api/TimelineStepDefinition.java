@@ -1,18 +1,5 @@
 package com.amazon.api;
 
-import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.hasItem;
-
-import java.util.ArrayList;
-
-import org.junit.Assert;
-import org.junit.BeforeClass;
-
-import com.amazon.constants.EndPoints;
-import com.amazon.constants.Path;
-
-import cucumber.api.java.en.When;
-import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
@@ -22,7 +9,7 @@ public class TimelineStepDefinition {
 	ResponseSpecification resSpec;
 	String tweetId = "";
 
-	@BeforeClass
+/*	@BeforeClass
 	public void setup() {
 		reqSpec = RestUtilities.getRequestSpecification();
 		reqSpec.queryParam("user_id", "apiautomation");
@@ -44,6 +31,6 @@ public class TimelineStepDefinition {
 		System.out.println("Read Tweets 2 Method");
 		Assert.assertTrue(screenNameList.contains("apiautomation"));
 
-	}
+	}*/
 
 }
