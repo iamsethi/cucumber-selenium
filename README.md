@@ -2,6 +2,11 @@
 
 @Singleton - Then only 1 driver will be created for entire suite
 
+
+########################Scenario context ####################################
+https://www.toolsqa.com/selenium-cucumber-framework/share-data-between-steps-in-cucumber-using-scenario-context/
+Scenario context for tweetId between different steps
+
 ########################scribejava-apis####################################
 
 java.lang.NoClassDefFoundError: com/github/scribejava/core/model/Abstract Request
