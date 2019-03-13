@@ -19,6 +19,10 @@ public class HomePage extends BasePage {
 
 	@FindBy(how = How.XPATH, using = "//input[@type='submit']")
 	public WebElement txtbx_Go;
+	
+	@FindBy(how = How.XPATH, using = "//a[@aria-label='Shop by Category - Shop now']")
+	public WebElement txtbx_shop_by_category;
+	
 
 	public void perform_Search(String search) {
 		txtbx_Srch.sendKeys(search);

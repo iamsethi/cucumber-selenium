@@ -20,5 +20,10 @@ public class HomePageSteps {
 	public void he_search_for(String product) {
 		homePage.perform_Search(product);
 	}
+	
+	@When("^he shop by category$")
+	public void he_shop_by_category() {
+		homePage.txtbx_shop_by_category.click();
+	}
 
 }
