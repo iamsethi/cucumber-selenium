@@ -2,24 +2,24 @@ package com.amazon.driver;
 
 import java.io.File;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.GeckoDriverService;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class FirefoxDriverManager extends DriverManager {
 
-	private ChromeDriverService service;
+	private GeckoDriverService service;
 
 	@Override
 	public void startService() {
 		if (null == service) {
 			try {
-				String driverPath = "src/test/resources/drivers/chromedriver";
+				String driverPath = "src/test/resources/drivers/geckodriver";
 				if (System.getProperty("os.name").contains("Windows")) {
 					driverPath += ".exe";
 				}
-				service = new ChromeDriverService.Builder().usingDriverExecutable(new File(driverPath))
+				service = new GeckoDriverService.Builder().usingDriverExecutable(new File(driverPath))
 						.usingAnyFreePort().build();
 				service.start();
 			} catch (Exception e) {
@@ -36,10 +36,10 @@ public class FirefoxDriverManager extends DriverManager {
 
 	@Override
 	public void createDriver() {
-		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
-		ChromeOptions options = new ChromeOptions();
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		FirefoxOptions options = new FirefoxOptions();
 		options.merge(capabilities);
-		driver = new ChromeDriver(service, options);
+		driver = new FirefoxDriver(service, options);
 	}
 
 }

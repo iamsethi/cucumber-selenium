@@ -40,12 +40,11 @@ public class World {
 
 	@Inject
 	public MYSQLJDBCConnection db;
-	
+
 	@Inject
 	public RestUtilities api;
 
 	@Inject
 	public ScenarioContext scenarioContext;
-	
 
 }

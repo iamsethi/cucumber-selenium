@@ -1,5 +1,6 @@
 package com.amazon.api.steps;
 
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.equalToIgnoringCase;
 import static org.hamcrest.Matchers.greaterThan;
@@ -10,7 +11,6 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 import org.apache.log4j.Logger;
 
@@ -36,11 +36,10 @@ public class SpotifyAlbumsSteps {
 	RequestSpecification reqSpec;
 	ResponseSpecification resSpec;
 
-
 	@Inject
 	@Named("SPOTIFY_ALBUMS_TRACKS")
 	private String SPOTIFY_ALBUMS_TRACKS;
-	
+
 	@Inject
 	@Named("SPOTIFY_ALBUMS")
 	private String SPOTIFY_ALBUMS;
@@ -49,39 +48,34 @@ public class SpotifyAlbumsSteps {
 	@Named("SPOTIFY_BASE_PATH")
 	private String SPOTIFY_BASE_PATH;
 
-
-
 	@SuppressWarnings("unchecked")
 	@When("^a user read the album track$")
-	public void a_user_read_the_album_track()  {
+	public void a_user_read_the_album_track() {
 		reqSpec = world.api.getSpotifyRequestSpecification();
 		reqSpec.basePath(SPOTIFY_BASE_PATH);
 
 		resSpec = world.api.getResponseSpecification();
-		
+
 		RestUtilities.setEndPoint(SPOTIFY_ALBUMS_TRACKS);
 		Response res = RestUtilities.getResponse(reqSpec, "get");
-		
-		res.then()
-		.body("items.size()", equalTo(18))
-		.body("href", equalToIgnoringCase("https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=0&limit=20"))
-		.body("items.name",hasItem("Party Ain't Over"))
-		.body("items.name",hasItems("Party Ain't Over","Drinks for You (Ladies Anthem)"))
-		.body("items[0].artists[0]", hasKey("uri"))
-		.body("items.findAll{it.name=='Get It Started'}", hasItems(hasEntry("name","Get It Started")))
-		.body("items.name",hasItem("Get It Started"))
-		.body("items.size()",equalTo(18))
-		.body("items.size()",greaterThan(17))
-		.body("items.size()",lessThan(19))
-		.body("items.size()",greaterThanOrEqualTo(18))
-		.body("items.size()",lessThanOrEqualTo(18))
-		.statusCode(200);
-		
-		res.then().assertThat()
-	      .body(matchesJsonSchemaInClasspath("schema/album-track.json"));
-		
+
+		res.then().body("items.size()", equalTo(18))
+				.body("href",
+						equalToIgnoringCase(
+								"https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=0&limit=20"))
+				.body("items.name", hasItem("Party Ain't Over"))
+				.body("items.name", hasItems("Party Ain't Over", "Drinks for You (Ladies Anthem)"))
+				.body("items[0].artists[0]", hasKey("uri"))
+				.body("items.findAll{it.name=='Get It Started'}", hasItems(hasEntry("name", "Get It Started")))
+				.body("items.name", hasItem("Get It Started")).body("items.size()", equalTo(18))
+				.body("items.size()", greaterThan(17)).body("items.size()", lessThan(19))
+				.body("items.size()", greaterThanOrEqualTo(18)).body("items.size()", lessThanOrEqualTo(18))
+				.statusCode(200);
+
+		res.then().assertThat().body(matchesJsonSchemaInClasspath("schema/album-track.json"));
+
 		log.info("https://api.spotify.com/v1/albums/{id} is: " + res.prettyPrint());
-		
+
 	}
 
 	@When("^a user read the album$")
@@ -90,15 +84,14 @@ public class SpotifyAlbumsSteps {
 		reqSpec.basePath(SPOTIFY_BASE_PATH);
 
 		resSpec = world.api.getResponseSpecification();
-		
+
 		RestUtilities.setEndPoint(SPOTIFY_ALBUMS);
 		Response res = RestUtilities.getResponse(reqSpec, "get");
-				
-		res.then().assertThat()
-	      .body(matchesJsonSchemaInClasspath("schema/album.json"));
-		
+
+		res.then().assertThat().body(matchesJsonSchemaInClasspath("schema/album.json"));
+
 		log.info("https://api.spotify.com/v1/albums/{id} is: " + res.prettyPrint());
 	}
-	
+
 
 }

@@ -98,3 +98,19 @@ SELECT * FROM TRADE_LETTER;
 exit
 
 ###################After Hook ###################################3
+
+Properties configProps = Properties.load(getClass().getClassLoader().getResourceAsStream("myconfig.properties");
+Names.bindProperties(binder(), configProps);
+and voilà all your config is ready for injection:
+
+@Provides // use this to have nice creation methods in modules
+public Connection getDBConnection(@Named("dbConnection") String connectionStr,
+                                  @Named("dbUser") String user,
+                                  @Named("dbPw") String pw,) {
+  return DriverManager.getConnection(connectionStr, user, pw);
+}
+Now just create your Java properties file myconfig.properties at the root of your classpath with
+
+dbConnection = jdbc:mysql://localhost/test
+dbUser = username
+dbPw = password
