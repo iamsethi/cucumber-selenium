@@ -84,15 +84,15 @@ public class JsonDataReader {
 				Field field = aClass.getField(locator);
 				WebElement element = ((WrapsElement) field.get(id)).getWrappedElement();
 				if (locator.startsWith("tbx_")) {
-					// Log.info("Filling " + locator + " with value : " + value + " ");
+					 log.info("Filling " + locator + " with value : " + value + " ");
 					element.clear();
 					element.sendKeys(value);
 				} else if (locator.startsWith("rbn_")) {
-					// Log.info("Filling " + locator + " with value : " + value + " ");
+					log.info("Filling " + locator + " with value : " + value + " ");
 				} else if (locator.startsWith("ddl_")) {
-					// Log.info("Filling " + locator + " with value : " + value + " ");
+					log.info("Filling " + locator + " with value : " + value + " ");
 				} else if (locator.startsWith("btn_")) {
-					// Log.info("Filling " + locator + " with value : " + value + " ");
+					log.info("Filling " + locator + " with value : " + value + " ");
 					element.click();
 				}
 			} catch (IllegalAccessException e) {

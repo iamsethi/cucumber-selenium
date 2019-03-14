@@ -7,6 +7,8 @@
 https://www.toolsqa.com/selenium-cucumber-framework/share-data-between-steps-in-cucumber-using-scenario-context/
 Scenario context for tweetId between different steps
 
+Scenario Context is a class which holds the test data information specifically. It actually use the Test Context to travel the information between various steps. With in this ScenarioContext class, you can create any number of fields to store any form of data. It stores the information in the key value pair and again, value can be of any type. It can store String, Boolean, Integer or may be a Class. Also the important point here is that the information which we store in Scenario Context is generated run time. Means during the run if you wish to store some information, you will use Scenario Context.
+
 ########################scribejava-apis####################################
 
 java.lang.NoClassDefFoundError: com/github/scribejava/core/model/Abstract Request
