@@ -135,14 +135,6 @@
 			<version>${scribe.java}</version>
 			<scope>test</scope>
 		</dependency>
-			<!-- Extract request and response logs to print to log file otherwise we 
-			need to get it as asString merthod -->
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
-		</dependency>
-		
 
 	</dependencies>
 

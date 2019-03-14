@@ -3,6 +3,14 @@
 @Singleton - Then only 1 driver will be created for entire suite
 
 
+########################Schema validation ####################################
+https://jsonschema.net/ and click on Infer Schema to generate the schema
+put the schema under src/test/resources/schema
+use it
+
+res.then().assertThat()
+	      .body(matchesJsonSchemaInClasspath("schema/album-track.json"));
+
 ########################Scenario context ####################################
 https://www.toolsqa.com/selenium-cucumber-framework/share-data-between-steps-in-cucumber-using-scenario-context/
 Scenario context for tweetId between different steps

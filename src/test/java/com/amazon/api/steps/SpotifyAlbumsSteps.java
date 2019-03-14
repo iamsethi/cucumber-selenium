@@ -10,6 +10,7 @@ import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasKey;
 import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.lessThanOrEqualTo;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 import org.apache.log4j.Logger;
 
@@ -62,20 +63,22 @@ public class SpotifyAlbumsSteps {
 		Response res = RestUtilities.getResponse(reqSpec, "get");
 		
 		res.then()
-		.body("items.size()", equalTo(10))
-		.body("href", equalToIgnoringCase("https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=5&limit=10&market=ES"))
+		.body("items.size()", equalTo(18))
+		.body("href", equalToIgnoringCase("https://api.spotify.com/v1/albums/4aawyAB9vmqN3uQ7FjRGTy/tracks?offset=0&limit=20"))
 		.body("items.name",hasItem("Party Ain't Over"))
 		.body("items.name",hasItems("Party Ain't Over","Drinks for You (Ladies Anthem)"))
 		.body("items[0].artists[0]", hasKey("uri"))
 		.body("items.findAll{it.name=='Get It Started'}", hasItems(hasEntry("name","Get It Started")))
 		.body("items.name",hasItem("Get It Started"))
-		.body("items.size()",equalTo(10))
-		.body("items.size()",greaterThan(5))
-		.body("items.size()",lessThan(11))
-		.body("items.size()",greaterThanOrEqualTo(10))
-		.body("items.size()",lessThanOrEqualTo(10))
+		.body("items.size()",equalTo(18))
+		.body("items.size()",greaterThan(17))
+		.body("items.size()",lessThan(19))
+		.body("items.size()",greaterThanOrEqualTo(18))
+		.body("items.size()",lessThanOrEqualTo(18))
 		.statusCode(200);
 		
+		res.then().assertThat()
+	      .body(matchesJsonSchemaInClasspath("schema/album-track.json"));
 		
 		log.info("https://api.spotify.com/v1/albums/{id} is: " + res.prettyPrint());
 		
@@ -91,6 +94,9 @@ public class SpotifyAlbumsSteps {
 		RestUtilities.setEndPoint(SPOTIFY_ALBUMS);
 		Response res = RestUtilities.getResponse(reqSpec, "get");
 				
+		res.then().assertThat()
+	      .body(matchesJsonSchemaInClasspath("schema/album.json"));
+		
 		log.info("https://api.spotify.com/v1/albums/{id} is: " + res.prettyPrint());
 	}
 	

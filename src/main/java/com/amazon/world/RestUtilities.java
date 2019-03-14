@@ -103,9 +103,6 @@ public class RestUtilities {
 		REQUEST_BUILDER.addRequestSpecification(REQUEST_SPECIFICATION);
 		REQUEST_BUILDER.addHeader("Accept", "application/json");
 		REQUEST_BUILDER.addHeader("Content-Type","application/json");
-		REQUEST_BUILDER.addQueryParam("market", "ES");
-		REQUEST_BUILDER.addQueryParam("limit", "10");
-		REQUEST_BUILDER.addQueryParam("offset", "5");
 		
 		REQUEST_SPEC = REQUEST_BUILDER.build();
 		return REQUEST_SPEC;
@@ -115,6 +112,7 @@ public class RestUtilities {
 		RESPONSE_BUILDER = new ResponseSpecBuilder();
 		RESPONSE_BUILDER.expectStatusCode(HttpStatus.SC_OK);
 		RESPONSE_BUILDER.expectResponseTime(lessThan(4L), TimeUnit.SECONDS);
+		RESPONSE_BUILDER.expectContentType(ContentType.JSON);
 		RESPONSE_SPEC = RESPONSE_BUILDER.build();
 		return RESPONSE_SPEC;
 	}
