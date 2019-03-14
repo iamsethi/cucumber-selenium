@@ -1,4 +1,4 @@
-package com.amazon.steps;
+package com.amazon.api.steps;
 
 import static io.restassured.RestAssured.given;
 
@@ -41,9 +41,6 @@ public class TwitterWorkFlowSteps {
 	@Named("STATUSES_TWEET_DESTROY")
 	private String STATUSES_TWEET_DESTROY;
 	
-	@Inject
-	@Named("STATUSES_USER_TIMELINE")
-	private String STATUSES_USER_TIMELINE;
 	
 	@Inject
 	@Named("STATUSES_TWEET_READ_SINGLE")

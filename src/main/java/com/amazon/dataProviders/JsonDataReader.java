@@ -23,11 +23,6 @@ import com.google.gson.JsonObject;
 public class JsonDataReader {
 	private Logger log = Logger.getLogger(this.getClass());
 
-	JsonDataReader() {
-		log.info(environments);
-		log.info("I am constructor of : " + this.getClass().getSimpleName());
-	}
-
 	private static String dataFile = System.getProperty("user.dir") + File.separator + "src/test/resources/sfa.json";
 	static Gson gson = new Gson();
 	private static JsonObject jsonObject;

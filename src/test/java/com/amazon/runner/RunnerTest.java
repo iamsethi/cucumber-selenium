@@ -14,8 +14,9 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 
-@CucumberOptions(features = "classpath:features", tags = { "@tweet" }, glue = { "com.amazon.steps" }, plugin = {
-		"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html" }, monochrome = true)
+@CucumberOptions(features = "classpath:features", tags = { "@mtimeline" }, glue = {
+		"com.amazon.steps","com.amazon.api.steps" }, plugin = {
+				"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html" }, monochrome = true)
 
 public class RunnerTest {
 

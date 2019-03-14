@@ -22,6 +22,7 @@
 		<extentsreport.version>3.1.2</extentsreport.version>
 		<mysql.version>8.0.12</mysql.version>
 		<common.io.version>1.3.2</common.io.version>
+		<scribe.java>2.5.3</scribe.java>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
@@ -131,7 +132,7 @@
 		<dependency>
 			<groupId>com.github.scribejava</groupId>
 			<artifactId>scribejava-apis</artifactId>
-			<version>2.5.3</version>
+			<version>${scribe.java}</version>
 			<scope>test</scope>
 		</dependency>
 
