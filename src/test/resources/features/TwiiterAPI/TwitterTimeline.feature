@@ -6,7 +6,7 @@ Feature: API Testing - Get Tweet timelines
     When a user read the user timeline
     When a user read the user timeline with count as "5"
 
-  @mtimeline
+  @timeline
   Scenario: GET statuses/mentions_timeline
     When a user read the mention timeline
     When a user read the mention timeline with count as "2"
