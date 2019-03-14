@@ -37,6 +37,10 @@ public class SpotifyAlbumsSteps {
 
 
 	@Inject
+	@Named("SPOTIFY_ALBUMS_TRACKS")
+	private String SPOTIFY_ALBUMS_TRACKS;
+	
+	@Inject
 	@Named("SPOTIFY_ALBUMS")
 	private String SPOTIFY_ALBUMS;
 
@@ -46,6 +50,7 @@ public class SpotifyAlbumsSteps {
 
 
 
+	@SuppressWarnings("unchecked")
 	@When("^a user read the album track$")
 	public void a_user_read_the_album_track()  {
 		reqSpec = world.api.getSpotifyRequestSpecification();
@@ -53,7 +58,7 @@ public class SpotifyAlbumsSteps {
 
 		resSpec = world.api.getResponseSpecification();
 		
-		RestUtilities.setEndPoint(SPOTIFY_ALBUMS);
+		RestUtilities.setEndPoint(SPOTIFY_ALBUMS_TRACKS);
 		Response res = RestUtilities.getResponse(reqSpec, "get");
 		
 		res.then()
@@ -75,5 +80,19 @@ public class SpotifyAlbumsSteps {
 		log.info("https://api.spotify.com/v1/albums/{id} is: " + res.prettyPrint());
 		
 	}
+
+	@When("^a user read the album$")
+	public void a_user_read_the_album() {
+		reqSpec = world.api.getSpotifyRequestSpecification();
+		reqSpec.basePath(SPOTIFY_BASE_PATH);
+
+		resSpec = world.api.getResponseSpecification();
+		
+		RestUtilities.setEndPoint(SPOTIFY_ALBUMS);
+		Response res = RestUtilities.getResponse(reqSpec, "get");
+				
+		log.info("https://api.spotify.com/v1/albums/{id} is: " + res.prettyPrint());
+	}
+	
 
 }

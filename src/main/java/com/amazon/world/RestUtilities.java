@@ -6,6 +6,8 @@ import static org.hamcrest.Matchers.lessThan;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.http.HttpStatus;
+
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
@@ -111,7 +113,7 @@ public class RestUtilities {
 
 	public ResponseSpecification getResponseSpecification() {
 		RESPONSE_BUILDER = new ResponseSpecBuilder();
-		RESPONSE_BUILDER.expectStatusCode(200);
+		RESPONSE_BUILDER.expectStatusCode(HttpStatus.SC_OK);
 		RESPONSE_BUILDER.expectResponseTime(lessThan(4L), TimeUnit.SECONDS);
 		RESPONSE_SPEC = RESPONSE_BUILDER.build();
 		return RESPONSE_SPEC;
@@ -137,7 +139,7 @@ public class RestUtilities {
 		REQUEST_SPEC.spec(reqSpec);
 		Response response = null;
 		if (type.equalsIgnoreCase("get")) {
-			response = given().spec(REQUEST_SPEC).log().all().get(ENDPOINT);
+			response = given().spec(REQUEST_SPEC).get(ENDPOINT);
 		} else if (type.equalsIgnoreCase("post")) {
 			response = given().spec(REQUEST_SPEC).post(ENDPOINT);
 		} else if (type.equalsIgnoreCase("put")) {
