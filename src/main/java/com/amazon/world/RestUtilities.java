@@ -1,4 +1,4 @@
-package com.amazon.constants;
+package com.amazon.world;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.lessThan;
@@ -41,6 +41,24 @@ public class RestUtilities {
 	@Inject
 	@Named("BASE_URI")
 	private String BASE_URI;
+	
+	
+	@Inject
+	@Named("CLIENT_ID")
+	private String CLIENT_ID;
+
+	@Inject
+	@Named("CLIENT_SECRET")
+	private String CLIENT_SECRET;
+	
+	
+	@Inject
+	@Named("SPOTIFY_BASE_URI")
+	private String SPOTIFY_BASE_URI;
+
+	@Inject
+	@Named("SPOTIFY_TOKEN")
+	private String SPOTIFY_TOKEN;
 
 	public static String ENDPOINT;
 	public static RequestSpecBuilder REQUEST_BUILDER;
@@ -52,11 +70,41 @@ public class RestUtilities {
 		ENDPOINT = epoint;
 	}
 
-	public RequestSpecification getRequestSpecification() {
+	public RequestSpecification getTwitterRequestSpecification() {
 		AuthenticationScheme authScheme = RestAssured.oauth(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_SECRET);
 		REQUEST_BUILDER = new RequestSpecBuilder();
 		REQUEST_BUILDER.setBaseUri(BASE_URI);
 		REQUEST_BUILDER.setAuth(authScheme);
+		REQUEST_SPEC = REQUEST_BUILDER.build();
+		return REQUEST_SPEC;
+	}
+	
+	public RequestSpecification getSpotifyRequestSpecification() {
+	
+		String OAUTH_TOKEN=	given()
+				.params("grant_type","client_credentials")
+				.auth()
+				.preemptive()
+				.basic(CLIENT_ID, CLIENT_SECRET)
+				.when()
+				.post(SPOTIFY_TOKEN)
+				.then()
+				.extract()
+				.path("access_token");
+		
+		RequestSpecification REQUEST_SPECIFICATION = given()
+				.baseUri(SPOTIFY_BASE_URI)
+				.auth()
+				.oauth2(OAUTH_TOKEN);
+		
+		REQUEST_BUILDER = new RequestSpecBuilder();
+		REQUEST_BUILDER.addRequestSpecification(REQUEST_SPECIFICATION);
+		REQUEST_BUILDER.addHeader("Accept", "application/json");
+		REQUEST_BUILDER.addHeader("Content-Type","application/json");
+		REQUEST_BUILDER.addQueryParam("market", "ES");
+		REQUEST_BUILDER.addQueryParam("limit", "10");
+		REQUEST_BUILDER.addQueryParam("offset", "5");
+		
 		REQUEST_SPEC = REQUEST_BUILDER.build();
 		return REQUEST_SPEC;
 	}
@@ -89,7 +137,7 @@ public class RestUtilities {
 		REQUEST_SPEC.spec(reqSpec);
 		Response response = null;
 		if (type.equalsIgnoreCase("get")) {
-			response = given().spec(REQUEST_SPEC).get(ENDPOINT);
+			response = given().spec(REQUEST_SPEC).log().all().get(ENDPOINT);
 		} else if (type.equalsIgnoreCase("post")) {
 			response = given().spec(REQUEST_SPEC).post(ENDPOINT);
 		} else if (type.equalsIgnoreCase("put")) {

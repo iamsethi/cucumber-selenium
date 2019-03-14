@@ -1,3 +1,5 @@
+@api
+
 Feature: API Testing - Get Tweet timelines
   A timeline is simply a list, or an aggregated stream of Tweets.  The Twitter API has several endpoints that return a timeline of Tweet data - see the table below for more details:
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 
-import com.amazon.constants.RestUtilities;
+import com.amazon.world.RestUtilities;
 import com.amazon.world.World;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -44,7 +44,7 @@ public class TwitterTimelineSteps {
 
 		// https://api.twitter.com/1.1/statuses/home_timeline.json
 
-		reqSpec = world.api.getRequestSpecification();
+		reqSpec = world.api.getTwitterRequestSpecification();
 		reqSpec.basePath(STATUSES);
 
 		resSpec = world.api.getResponseSpecification();
@@ -57,7 +57,7 @@ public class TwitterTimelineSteps {
 	@When("^a user read the user timeline with count as \"([^\"]*)\"$")
 	public void a_user_read_the_user_timeline_with_count_as(String count) {
 
-		reqSpec = world.api.getRequestSpecification();
+		reqSpec = world.api.getTwitterRequestSpecification();
 		reqSpec.basePath(STATUSES);
 
 		resSpec = world.api.getResponseSpecification();
@@ -74,7 +74,7 @@ public class TwitterTimelineSteps {
 
 		// https://api.twitter.com/1.1/statuses/home_timeline.json
 
-		reqSpec = world.api.getRequestSpecification();
+		reqSpec = world.api.getTwitterRequestSpecification();
 		reqSpec.basePath(STATUSES);
 
 		resSpec = world.api.getResponseSpecification();
@@ -87,7 +87,7 @@ public class TwitterTimelineSteps {
 	@When("^a user read the mention timeline with count as \"([^\"]*)\"$")
 	public void a_user_read_the_mention_timeline_with_count_as(String count) {
 
-		reqSpec = world.api.getRequestSpecification();
+		reqSpec = world.api.getTwitterRequestSpecification();
 		reqSpec.basePath(STATUSES);
 
 		resSpec = world.api.getResponseSpecification();

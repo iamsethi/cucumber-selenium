@@ -1,3 +1,5 @@
+@api
+
 Feature: API Testing - Post, retrieve and engage with Tweets
   The following API endpoints can be used to programmatically create, retrieve and delete Tweets
 

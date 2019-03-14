@@ -4,8 +4,8 @@ import static io.restassured.RestAssured.given;
 
 import org.apache.log4j.Logger;
 
-import com.amazon.constants.RestUtilities;
 import com.amazon.enums.Context;
+import com.amazon.world.RestUtilities;
 import com.amazon.world.World;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
@@ -51,7 +51,7 @@ public class TwitterWorkFlowSteps {
 	public void a_user_post_the_tweet(String tweetMessage) {
 		// https://api.twitter.com/1.1/statuses/update.json?status=Hi There!!
 	
-		reqSpec = world.api.getRequestSpecification();
+		reqSpec = world.api.getTwitterRequestSpecification();
 		reqSpec.basePath(STATUSES);
 		
 		resSpec = world.api.getResponseSpecification();
@@ -74,7 +74,7 @@ public class TwitterWorkFlowSteps {
 	
 	@When("^user read the tweet$")
 	public void user_read_the_tweet() {
-		reqSpec = world.api.getRequestSpecification();
+		reqSpec = world.api.getTwitterRequestSpecification();
 		reqSpec.basePath(STATUSES);
 		
 		resSpec = world.api.getResponseSpecification();
@@ -90,7 +90,7 @@ public class TwitterWorkFlowSteps {
 
 	@When("^User delete the tweet$")
 	public void user_delete_the_tweet() {
-		reqSpec = world.api.getRequestSpecification();
+		reqSpec = world.api.getTwitterRequestSpecification();
 		reqSpec.basePath(STATUSES);
 		
 		resSpec = world.api.getResponseSpecification();

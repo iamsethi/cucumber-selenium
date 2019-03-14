@@ -2,7 +2,6 @@ package com.amazon.world;
 
 import org.openqa.selenium.WebDriver;
 
-import com.amazon.constants.RestUtilities;
 import com.amazon.dataProviders.ConfigFileReader;
 import com.amazon.dataProviders.JsonDataReader;
 import com.amazon.databases.MYSQLJDBCConnection;
