@@ -1,0 +1,207 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "artists"
+  ],
+  "properties": {
+    "artists": {
+      "$id": "#/properties/artists",
+      "type": "array",
+      "title": "The Artists Schema",
+      "items": {
+        "$id": "#/properties/artists/items",
+        "type": "object",
+        "title": "The Items Schema",
+        "required": [
+          "external_urls",
+          "followers",
+          "genres",
+          "href",
+          "id",
+          "images",
+          "name",
+          "popularity",
+          "type",
+          "uri"
+        ],
+        "properties": {
+          "external_urls": {
+            "$id": "#/properties/artists/items/properties/external_urls",
+            "type": "object",
+            "title": "The External_urls Schema",
+            "required": [
+              "spotify"
+            ],
+            "properties": {
+              "spotify": {
+                "$id": "#/properties/artists/items/properties/external_urls/properties/spotify",
+                "type": "string",
+                "title": "The Spotify Schema",
+                "default": "",
+                "examples": [
+                  "https://open.spotify.com/artist/2CIMQHirSU0MQqyYHq0eOx"
+                ],
+                "pattern": "^(.*)$"
+              }
+            }
+          },
+          "followers": {
+            "$id": "#/properties/artists/items/properties/followers",
+            "type": "object",
+            "title": "The Followers Schema",
+            "required": [
+              "href",
+              "total"
+            ],
+            "properties": {
+              "href": {
+                "$id": "#/properties/artists/items/properties/followers/properties/href",
+                "type": "null",
+                "title": "The Href Schema",
+                "default": null,
+                "examples": [
+                  null
+                ]
+              },
+              "total": {
+                "$id": "#/properties/artists/items/properties/followers/properties/total",
+                "type": "integer",
+                "title": "The Total Schema",
+                "default": 0,
+                "examples": [
+                  2183264
+                ]
+              }
+            }
+          },
+          "genres": {
+            "$id": "#/properties/artists/items/properties/genres",
+            "type": "array",
+            "title": "The Genres Schema",
+            "items": {
+              "$id": "#/properties/artists/items/properties/genres/items",
+              "type": "string",
+              "title": "The Items Schema",
+              "default": "",
+              "examples": [
+                "big room",
+                "edm",
+                "electro house",
+                "progressive house"
+              ],
+              "pattern": "^(.*)$"
+            }
+          },
+          "href": {
+            "$id": "#/properties/artists/items/properties/href",
+            "type": "string",
+            "title": "The Href Schema",
+            "default": "",
+            "examples": [
+              "https://api.spotify.com/v1/artists/2CIMQHirSU0MQqyYHq0eOx"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "id": {
+            "$id": "#/properties/artists/items/properties/id",
+            "type": "string",
+            "title": "The Id Schema",
+            "default": "",
+            "examples": [
+              "2CIMQHirSU0MQqyYHq0eOx"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "images": {
+            "$id": "#/properties/artists/items/properties/images",
+            "type": "array",
+            "title": "The Images Schema",
+            "items": {
+              "$id": "#/properties/artists/items/properties/images/items",
+              "type": "object",
+              "title": "The Items Schema",
+              "required": [
+                "height",
+                "url",
+                "width"
+              ],
+              "properties": {
+                "height": {
+                  "$id": "#/properties/artists/items/properties/images/items/properties/height",
+                  "type": "integer",
+                  "title": "The Height Schema",
+                  "default": 0,
+                  "examples": [
+                    640
+                  ]
+                },
+                "url": {
+                  "$id": "#/properties/artists/items/properties/images/items/properties/url",
+                  "type": "string",
+                  "title": "The Url Schema",
+                  "default": "",
+                  "examples": [
+                    "https://i.scdn.co/image/86e8991077d6ce237be8f24dbc65e90f2e1f2a43"
+                  ],
+                  "pattern": "^(.*)$"
+                },
+                "width": {
+                  "$id": "#/properties/artists/items/properties/images/items/properties/width",
+                  "type": "integer",
+                  "title": "The Width Schema",
+                  "default": 0,
+                  "examples": [
+                    640
+                  ]
+                }
+              }
+            }
+          },
+          "name": {
+            "$id": "#/properties/artists/items/properties/name",
+            "type": "string",
+            "title": "The Name Schema",
+            "default": "",
+            "examples": [
+              "deadmau5"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "popularity": {
+            "$id": "#/properties/artists/items/properties/popularity",
+            "type": "integer",
+            "title": "The Popularity Schema",
+            "default": 0,
+            "examples": [
+              70
+            ]
+          },
+          "type": {
+            "$id": "#/properties/artists/items/properties/type",
+            "type": "string",
+            "title": "The Type Schema",
+            "default": "",
+            "examples": [
+              "artist"
+            ],
+            "pattern": "^(.*)$"
+          },
+          "uri": {
+            "$id": "#/properties/artists/items/properties/uri",
+            "type": "string",
+            "title": "The Uri Schema",
+            "default": "",
+            "examples": [
+              "spotify:artist:2CIMQHirSU0MQqyYHq0eOx"
+            ],
+            "pattern": "^(.*)$"
+          }
+        }
+      }
+    }
+  }
+}

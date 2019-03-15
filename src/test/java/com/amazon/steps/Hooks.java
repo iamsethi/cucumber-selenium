@@ -36,7 +36,7 @@ public class Hooks {
 
 	@After(order = 1)
 	public void afterScenario(Scenario scenario) {
-		if (scenario.isFailed()) {
+		if (scenario.isFailed() && (!scenario.getSourceTagNames().contains("@api"))) {
 			world.db.deleteUser();
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			try {

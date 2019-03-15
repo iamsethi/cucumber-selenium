@@ -48,6 +48,16 @@ public class SpotifyAlbumsSteps {
 	@Named("SPOTIFY_BASE_PATH")
 	private String SPOTIFY_BASE_PATH;
 
+	@Inject
+	@Named("SPOTIFY_ARTISTS")
+	private String SPOTIFY_ARTISTS;
+	
+
+	@Inject
+	@Named("SPOTIFY_SEVERAL_ARTISTS")
+	private String SPOTIFY_SEVERAL_ARTISTS;
+	
+
 	@SuppressWarnings("unchecked")
 	@When("^a user read the album track$")
 	public void a_user_read_the_album_track() {
@@ -93,5 +103,36 @@ public class SpotifyAlbumsSteps {
 		log.info("https://api.spotify.com/v1/albums/{id} is: " + res.prettyPrint());
 	}
 
+	@When("^a user get an Artist Album for id \"([^\"]*)\"$")
+	public void a_user_get_an_Artist_Album_for_id(String artistId) throws Throwable {
+		// https://api.spotify.com/v1/artists/{id}/albums
+		reqSpec = world.api.getSpotifyRequestSpecification();
+		reqSpec.basePath(SPOTIFY_BASE_PATH);
+
+		resSpec = world.api.getResponseSpecification();
+
+		RestUtilities.setEndPoint(SPOTIFY_ARTISTS);
+		Response res = RestUtilities.getResponse(RestUtilities.createPathParam(reqSpec, "id", artistId), "get");
+		res.then().assertThat().body(matchesJsonSchemaInClasspath("schema/artist.json"));
+
+		log.info("https://api.spotify.com/v1/artists/{id}/albums is: " + res.prettyPrint());
+	}
+	
+
+@When("^a user get an several Artist id \"([^\"]*)\"$")
+public void a_user_get_an_several_Artist_id(String artistId) throws Throwable {
+	
+	//https://api.spotify.com/v1/artists
+	reqSpec = world.api.getSpotifyRequestSpecification();
+	reqSpec.basePath(SPOTIFY_BASE_PATH);
+
+	resSpec = world.api.getResponseSpecification();
+
+	RestUtilities.setEndPoint(SPOTIFY_SEVERAL_ARTISTS);
+	Response res = RestUtilities.getResponse(RestUtilities.createQueryParam(reqSpec, "ids", artistId), "get");
+	res.then().assertThat().body(matchesJsonSchemaInClasspath("schema/several_artist.json"));
+
+	log.info("https://api.spotify.com/v1/artists is: " + res.prettyPrint());
+}
 
 }
