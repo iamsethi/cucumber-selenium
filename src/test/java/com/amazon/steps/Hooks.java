@@ -8,7 +8,6 @@ import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-import com.amazon.driver.DriverManager;
 import com.amazon.world.World;
 import com.cucumber.listener.Reporter;
 import com.google.inject.Inject;
@@ -21,8 +20,9 @@ public class Hooks {
 	@Inject
 	private World world;
 
-	@Inject
-	public DriverManager driverManager;
+	/*
+	 * @Inject @Chrome public DriverManager driverManager;
+	 */
 
 	// Set the value of the properties in the support
 	@Before
@@ -62,7 +62,10 @@ public class Hooks {
 	@After(order = 0)
 	public void afterScenario() {
 		if (world.config.isCLOSE_BROWSER()) {
-			driverManager.quitDriver();
+			if (null != world.driver) {
+				world.driver.quit();
+				world.driver = null;
+			}
 		}
 	}
 }

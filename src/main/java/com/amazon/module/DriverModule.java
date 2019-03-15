@@ -4,24 +4,36 @@ import org.openqa.selenium.WebDriver;
 
 import com.amazon.driver.ChromeDriverManager;
 import com.amazon.driver.DriverManager;
+import com.amazon.driver.FirefoxDriverManager;
+import com.amazon.interfaces.Chrome;
+import com.amazon.interfaces.Firefox;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 import com.google.inject.Scopes;
+import com.google.inject.name.Named;
+import com.google.inject.name.Names;
 
 public class DriverModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
-		bind(DriverManager.class).to(ChromeDriverManager.class).in(Scopes.SINGLETON);
-		/*
-		 * bind(DriverManager.class).annotatedWith(Names.named("firefox")).to(
-		 * FirefoxDriverManager.class) .in(Scopes.SINGLETON);
-		 */
+		bind(DriverManager.class).annotatedWith(Names.named("Chrome")).to(ChromeDriverManager.class)
+				.in(Scopes.SINGLETON);
+
+		bind(DriverManager.class).annotatedWith(Names.named("Firefox")).to(FirefoxDriverManager.class)
+				.in(Scopes.SINGLETON);
 
 	}
 
 	@Provides
-	public WebDriver getChromeDriver(DriverManager driverManager) {
+	@Chrome
+	public WebDriver getChromeDriver(@Named("Chrome") DriverManager driverManager) {
+		return driverManager.getDriver();
+	}
+
+	@Provides
+	@Firefox
+	public WebDriver getFirefoxDriver(@Named("Firefox") DriverManager driverManager) {
 		return driverManager.getDriver();
 	}
 

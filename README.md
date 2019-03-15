@@ -1,3 +1,35 @@
+########################Multi browser########################
+@Inject @Chrome
+public WebDriver driver;
+	
+@Chrome is an interface created under  package com.amazon.interfaces;
+it'll search for @Chrome annotation  under @Provides which it'll find in method 
+
+@Provides
+@Chrome
+public WebDriver getChromeDriver(@Named("Chrome") DriverManager driverManager) {
+		return driverManager.getDriver();}
+
+but the above method has an argument of DriverManager which it'll find it under configure method
+
+######https://stackoverflow.com/questions/42184243/the-meaning-of-bindings-annotation-with-provider-methods########################
+@Provides @PayPal
+  CreditCardProcessor providePayPalCreditCardProcessor(
+      @Named("PayPal API key") String apiKey) {
+    PayPalCreditCardProcessor processor = new PayPalCreditCardProcessor();
+    processor.setApiKey(apiKey);
+    return processor;
+  }
+  
+  @Inject
+  public RealBillingService(@PayPal CreditCardProcessor processor,
+      TransactionLog transactionLog)
+      
+Think of the annotation as part of the method's return type. The @Provides method you listed does not simply provide a CreditCardProcessor, it provides a @PayPal CreditCardProcessor. Thus, the method is written @Provides @PayPal CreditCardProcessor.
+
+You can then request @PayPal CreditCardProcessor as in your second usage, by annotating a parameter in an @Inject-annotated method or constructor, or by adding the annotation to an @Inject-annotated field. (You can also request it directly from an Injector instance by creating a Key.)
+
+
 @ScenarioScoped dependency that is injected by Cucumber into your step classes are always re-created for each scenario. Your job is to make sure you dont have any static fields in the injected dependency. Static fields belongs to the class and not the instance so they are not cleared for each new instance
 
 @Singleton - Then only 1 driver will be created for entire suite
@@ -58,7 +90,7 @@ Hooks should be in step definition
 
 ########################Read Data from JSON####################################
 RegisterEnvironment and Initialize json are static methods
-All other methods are non statice - accessed via -> world.data.fill....
+All other methods are non static - accessed via -> world.data.fill....
 
 ########################Cucumber Extent Reports####################################
 Use info.cukes instead of io.cucumber
@@ -97,7 +129,7 @@ SELECT * FROM TRADE_LETTER;
 
 exit
 
-###################After Hook ###################################3
+###################DB Logic ###################################3
 
 Properties configProps = Properties.load(getClass().getClassLoader().getResourceAsStream("myconfig.properties");
 Names.bindProperties(binder(), configProps);

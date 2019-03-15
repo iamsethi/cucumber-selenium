@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import com.amazon.dataProviders.ConfigFileReader;
 import com.amazon.dataProviders.JsonDataReader;
 import com.amazon.databases.MYSQLJDBCConnection;
+import com.amazon.interfaces.Chrome;
 import com.google.inject.Inject;
 
 import cucumber.runtime.java.guice.ScenarioScoped;
@@ -16,6 +17,7 @@ public class World {
 	public JsonDataReader data;
 
 	@Inject
+	@Chrome
 	public WebDriver driver;
 
 	/*
