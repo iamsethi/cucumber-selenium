@@ -2,4 +2,20 @@
  2019-03-16--INFO -com.amazon.pages.HomePage:########Browser opened successfully########
  2019-03-16--INFO -com.amazon.pages.HomePage:########Browser opened successfully########
  2019-03-16--INFO -com.amazon.pages.ProductListingPage:########Browser opened successfully########
+ 2019-03-16--INFO -com.amazon.pages.CartPage:########Browser opened successfully########
+ 2019-03-16--INFO -com.amazon.pages.SignInPage:########Browser opened successfully########
+ 2019-03-16--INFO -com.amazon.pages.CheckoutPage:########Browser opened successfully########
+ 2019-03-16--INFO -com.amazon.pages.CheckoutPage:########Browser opened successfully########
+ 2019-03-16--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Name with value : Brian ShippingAddress 
+ 2019-03-16--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Address with value : 175 East Town St, Columbus 
+ 2019-03-16--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_City with value : Ohio 
+ 2019-03-16--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Phone with value : 09560146008 
+ 2019-03-16--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Name with value : Brian CancelOrder 
+ 2019-03-16--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Address with value : 175 East Town St, Columbus 
+ 2019-03-16--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_City with value : Ohio 
+ 2019-03-16--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Phone with value : 09560146008 
+ 2019-03-16--INFO -com.amazon.dataProviders.JsonDataReader:Filling btn_shipToThisAddress with value : click 
+ 2019-03-16--INFO -com.amazon.pages.CheckoutPage:########Browser opened successfully########
+ 2019-03-16--INFO -com.amazon.pages.CheckoutPage:########Browser opened successfully########
+ 2019-03-16--INFO -com.amazon.steps.Hooks:#######Browser closed successfully#######
  

@@ -141,10 +141,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				 <version>3.0.0-M3</version>
+				<version>3.0.0-M3</version>
 				<configuration>
-					<testFailureIgnore>false</testFailureIgnore>
-					<forkMode>once</forkMode>
+					<forkCount>0</forkCount>
 				</configuration>
 			</plugin>
 		</plugins>
