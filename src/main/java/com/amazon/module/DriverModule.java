@@ -25,16 +25,24 @@ public class DriverModule extends AbstractModule {
 
 	}
 
-	@Provides
-	@Chrome
+	@Provides @Chrome
 	public WebDriver getChromeDriver(@Named("Chrome") DriverManager driverManager) {
 		return driverManager.getDriver();
 	}
 
-	@Provides
-	@Firefox
+	@Provides @Firefox
 	public WebDriver getFirefoxDriver(@Named("Firefox") DriverManager driverManager) {
 		return driverManager.getDriver();
+	}
+
+	@Provides @Chrome
+	public DriverManager getChromeDriverManager(@Named("Chrome") DriverManager driverManager) {
+		return driverManager;
+	}
+	
+	@Provides @Firefox
+	public DriverManager getFirefoxDriverManager(@Named("Firefox") DriverManager driverManager) {
+		return driverManager;
 	}
 
 }
