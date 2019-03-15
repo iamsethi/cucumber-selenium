@@ -14,7 +14,7 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 
-@CucumberOptions(features = "classpath:features", tags = { "@api" }, glue = { "com.amazon.steps",
+@CucumberOptions(features = "classpath:features", tags = { "@regression" }, glue = { "com.amazon.steps",
 		"com.amazon.api.steps" }, plugin = {
 				"com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html" }, monochrome = true)
 

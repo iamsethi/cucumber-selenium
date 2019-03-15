@@ -1,7 +1,5 @@
 package com.amazon.module;
 
-import org.openqa.selenium.WebDriver;
-
 import com.amazon.driver.ChromeDriverManager;
 import com.amazon.driver.DriverManager;
 import com.amazon.driver.FirefoxDriverManager;
@@ -27,18 +25,6 @@ public class DriverModule extends AbstractModule {
 
 	@Provides
 	@Chrome
-	public WebDriver getChromeDriver(@Named("Chrome") DriverManager driverManager) {
-		return driverManager.getDriver();
-	}
-
-	@Provides
-	@Firefox
-	public WebDriver getFirefoxDriver(@Named("Firefox") DriverManager driverManager) {
-		return driverManager.getDriver();
-	}
-
-	@Provides
-	@Chrome
 	public DriverManager getChromeDriverManager(@Named("Chrome") DriverManager driverManager) {
 		return driverManager;
 	}
@@ -48,7 +34,5 @@ public class DriverModule extends AbstractModule {
 	public DriverManager getFirefoxDriverManager(@Named("Firefox") DriverManager driverManager) {
 		return driverManager;
 	}
-	
-	
 
 }

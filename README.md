@@ -1,3 +1,8 @@
+########################Singleton browser########################
+the browser is singleton so everytime a same driver id is returned if use below anywhere and any no of time
+log.info("Driver ID is : " + world.driver.get("firefox").get().getDriver().toString());
+
+
 ########################Multi browser########################
 @Inject @Chrome
 public WebDriver driver;
@@ -63,7 +68,8 @@ X-RapidAPI-Key
 38456a8097msh8b40ea11c2cad67p1f4175jsn50cae3bbd864
 
 ########################CLI####################################
- mvn clean test -Dcucumber.options="--tags @1483359468"
+mvn clean install -Dcucumber.options="--tags @regression" -Dbrowser=chrome
+ mvn clean install -Denvironment=stage -Dcucumber.options="--tags @stage1" -Dusername=ketan -Dbrowser=chrome
  
 ########################Logger####################################
 Logger log = Logger.getLogger(this.getClass());
