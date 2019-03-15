@@ -1,24 +1,21 @@
 package com.amazon.world;
 
-import org.openqa.selenium.WebDriver;
-
 import com.amazon.dataProviders.ConfigFileReader;
 import com.amazon.dataProviders.JsonDataReader;
 import com.amazon.databases.MYSQLJDBCConnection;
-import com.amazon.interfaces.Chrome;
+import com.amazon.driver.DriverProvider;
 import com.google.inject.Inject;
 
 import cucumber.runtime.java.guice.ScenarioScoped;
 
 @ScenarioScoped
 public class World {
+	
+	@Inject
+	public DriverProvider driver;
 
 	@Inject
 	public JsonDataReader data;
-
-	@Inject
-	@Chrome
-	public WebDriver driver;
 
 	/*
 	 * It'll look up in all modules from cucumber.properties with return type as

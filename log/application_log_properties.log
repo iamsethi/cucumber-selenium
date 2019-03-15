@@ -4870,7 +4870,7 @@
             },
             "followers": {
                 "href": null,
-                "total": 2183288
+                "total": 2183400
             },
             "genres": [
                 "big room",
@@ -4908,7 +4908,7 @@
             },
             "followers": {
                 "href": null,
-                "total": 438925
+                "total": 438941
             },
             "genres": [
                 "alternative dance",
@@ -4951,14 +4951,13 @@
             },
             "followers": {
                 "href": null,
-                "total": 12507779
+                "total": 12509654
             },
             "genres": [
                 "big room",
                 "dance pop",
                 "edm",
-                "pop",
-                "tropical house"
+                "pop"
             ],
             "href": "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6",
             "id": "1vCWHaC5f2uS3yhpwWbIA6",
@@ -4980,7 +4979,7 @@
                 }
             ],
             "name": "Avicii",
-            "popularity": 83,
+            "popularity": 84,
             "type": "artist",
             "uri": "spotify:artist:1vCWHaC5f2uS3yhpwWbIA6"
         }
@@ -5915,16 +5914,16 @@
                     }
                 },
                 "protected": false,
-                "followers_count": 11296782,
+                "followers_count": 11297153,
                 "friends_count": 14,
-                "listed_count": 12104,
+                "listed_count": 12100,
                 "created_at": "Fri May 01 20:34:48 +0000 2009",
                 "favourites_count": 0,
                 "utc_offset": null,
                 "time_zone": null,
                 "geo_enabled": true,
                 "verified": true,
-                "statuses_count": 583316,
+                "statuses_count": 583377,
                 "lang": "en",
                 "contributors_enabled": false,
                 "is_translator": false,
@@ -6133,11 +6132,11 @@
                     }
                 },
                 "protected": false,
-                "followers_count": 5881338,
+                "followers_count": 5881602,
                 "friends_count": 726,
                 "listed_count": 1086,
                 "created_at": "Tue Apr 29 16:42:28 +0000 2014",
-                "favourites_count": 5640,
+                "favourites_count": 5642,
                 "utc_offset": null,
                 "time_zone": null,
                 "geo_enabled": true,
@@ -6341,7 +6340,7 @@
                         }
                     },
                     "protected": false,
-                    "followers_count": 65259,
+                    "followers_count": 65257,
                     "friends_count": 1820,
                     "listed_count": 657,
                     "created_at": "Fri Mar 13 16:29:39 +0000 2009",
@@ -6381,7 +6380,7 @@
                 "contributors": null,
                 "is_quote_status": false,
                 "retweet_count": 5623,
-                "favorite_count": 21149,
+                "favorite_count": 21153,
                 "favorited": false,
                 "retweeted": false,
                 "possibly_sensitive": false,
@@ -6775,16 +6774,16 @@
                     }
                 },
                 "protected": false,
-                "followers_count": 2777608,
+                "followers_count": 2777894,
                 "friends_count": 0,
-                "listed_count": 3722,
+                "listed_count": 3719,
                 "created_at": "Tue Aug 16 05:23:41 +0000 2011",
                 "favourites_count": 0,
                 "utc_offset": null,
                 "time_zone": null,
                 "geo_enabled": true,
                 "verified": true,
-                "statuses_count": 322568,
+                "statuses_count": 322596,
                 "lang": "en",
                 "contributors_enabled": false,
                 "is_translator": false,
@@ -6817,7 +6816,7 @@
             "quoted_status_id": 1100695138819547136,
             "quoted_status_id_str": "1100695138819547136",
             "retweet_count": 396,
-            "favorite_count": 893,
+            "favorite_count": 892,
             "favorited": false,
             "retweeted": true,
             "possibly_sensitive": false,
@@ -7135,7 +7134,7 @@
                     }
                 },
                 "protected": false,
-                "followers_count": 30529142,
+                "followers_count": 30530355,
                 "friends_count": 297,
                 "listed_count": 93650,
                 "created_at": "Wed Dec 19 20:20:32 +0000 2007",
@@ -7174,15 +7173,15 @@
             "place": null,
             "contributors": null,
             "is_quote_status": false,
-            "retweet_count": 166864,
-            "favorite_count": 360076,
+            "retweet_count": 166862,
+            "favorite_count": 360075,
             "favorited": false,
             "retweeted": true,
             "possibly_sensitive": false,
             "lang": "en"
         },
         "is_quote_status": false,
-        "retweet_count": 166864,
+        "retweet_count": 166862,
         "favorite_count": 0,
         "favorited": false,
         "retweeted": true,
@@ -7768,7 +7767,7 @@
                     }
                 },
                 "protected": false,
-                "followers_count": 5230116,
+                "followers_count": 5245230,
                 "friends_count": 269,
                 "listed_count": 498,
                 "created_at": "Mon Jun 21 06:08:27 +0000 2010",
@@ -7807,15 +7806,15 @@
             "place": null,
             "contributors": null,
             "is_quote_status": false,
-            "retweet_count": 4212,
-            "favorite_count": 35673,
+            "retweet_count": 4213,
+            "favorite_count": 35672,
             "favorited": false,
             "retweeted": true,
             "possibly_sensitive": false,
             "lang": "en"
         },
         "is_quote_status": false,
-        "retweet_count": 4212,
+        "retweet_count": 4213,
         "favorite_count": 0,
         "favorited": false,
         "retweeted": true,
@@ -8200,7 +8199,7 @@
                 "time_zone": null,
                 "geo_enabled": false,
                 "verified": true,
-                "statuses_count": 178208,
+                "statuses_count": 178245,
                 "lang": "en",
                 "contributors_enabled": false,
                 "is_translator": false,
@@ -8425,16 +8424,16 @@
                     }
                 },
                 "protected": false,
-                "followers_count": 5587161,
+                "followers_count": 5587330,
                 "friends_count": 162,
-                "listed_count": 5767,
+                "listed_count": 5766,
                 "created_at": "Wed Oct 01 10:36:44 +0000 2008",
                 "favourites_count": 21,
                 "utc_offset": null,
                 "time_zone": null,
                 "geo_enabled": false,
                 "verified": true,
-                "statuses_count": 116432,
+                "statuses_count": 116437,
                 "lang": "en",
                 "contributors_enabled": false,
                 "is_translator": false,
@@ -9692,7 +9691,7 @@
         "lang": "en"
     }
 ]
- 2019-03-15--INFO -com.amazon.api.steps.TwitterWorkFlowSteps:The response.path i.e tweetId: 1106517631790706693
+ 2019-03-15--INFO -com.amazon.api.steps.TwitterWorkFlowSteps:The response.path i.e tweetId: 1106561762323849223
  2019-03-15--INFO -com.amazon.api.steps.TwitterWorkFlowSteps:The tweet text is: Love you @msdhoni!!
  2019-03-15--INFO -com.amazon.api.steps.TwitterWorkFlowSteps:Tweet deleted successfully
  

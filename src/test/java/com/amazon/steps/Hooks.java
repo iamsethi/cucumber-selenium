@@ -3,13 +3,8 @@ package com.amazon.steps;
 import java.io.File;
 import java.io.IOException;
 
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.NoSuchWindowException;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 
-import com.amazon.driver.DriverManager;
-import com.amazon.interfaces.Chrome;
 import com.amazon.world.World;
 import com.cucumber.listener.Reporter;
 import com.google.inject.Inject;
@@ -22,15 +17,12 @@ public class Hooks {
 	@Inject
 	private World world;
 
-	@Inject
-	@Chrome
-	public DriverManager driverManager;
-
 	// Set the value of the properties in the support
 	@Before
 	public void beforeScenario() throws IOException {
 		if (world.config.isMAXIMIZE_BROWSER()) {
-			world.driver.manage().window().maximize();
+			// world.driver.manage().window().maximize();
+			//world.driver.get("firefox");
 		}
 	}
 
@@ -41,7 +33,8 @@ public class Hooks {
 			String screenshotName = scenario.getName().replaceAll(" ", "_");
 			try {
 				// This takes a screenshot from the driver at save it to the specified location
-				File sourcePath = ((TakesScreenshot) world.driver).getScreenshotAs(OutputType.FILE);
+				// File sourcePath = ((TakesScreenshot)
+				// world.driver).getScreenshotAs(OutputType.FILE);
 
 				// Building up the destination path for the screenshot to save
 				// Also make sure to create a folder 'screenshots' with in the cucumber-report
@@ -50,7 +43,7 @@ public class Hooks {
 						+ screenshotName + ".png");
 
 				// Copy taken screenshot from source location to destination location
-				FileUtils.copyFile(sourcePath, destinationPath);
+				// FileUtils.copyFile(sourcePath, destinationPath);
 
 				// This attach the specified screenshot to the test
 				Reporter.addScreenCaptureFromPath(destinationPath.toString());
@@ -64,7 +57,7 @@ public class Hooks {
 	@After(order = 0)
 	public void afterScenario() {
 		if (world.config.isCLOSE_BROWSER()) {
-			driverManager.quitDriver();
+			// driverManager.quitDriver();
 		}
 	}
 }
