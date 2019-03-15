@@ -25,10 +25,9 @@ public class Hooks {
 
 	// Set the value of the properties in the support
 	@Before
-	public void beforeScenario() throws IOException {
-		if (world.config.isMAXIMIZE_BROWSER()) {
+	public void beforeScenario(Scenario scenario) throws IOException {
+		if (world.config.isMAXIMIZE_BROWSER() && (!scenario.getSourceTagNames().contains("@api"))) {
 			world.driver.get("chrome").get().getDriver().manage().window().maximize();
-			log.info("#######Browser maximized successfully#######");
 		}
 	}
 
@@ -63,7 +62,6 @@ public class Hooks {
 	public void afterScenario() {
 		if (world.config.isCLOSE_BROWSER()) {
 			world.driver.get("chrome").get().quitDriver();
-			log.info("#######Browser closed successfully#######");
 		}
 	}
 }
