@@ -1,3 +1,25 @@
+1.Setup Jenkins
+docker run -p 8080:8080 -p 50000:50000 -v "C:/Users/ketan.sethi/Jenkins:/var/jenkins_home" jenkins/jenkins:lts
+[volume mapping is neccessary because if we delete the container then next it'll pick from C:/Users/ketan.sethi the previous configurations]
+
+Go to localhost:8080 and install suggested plugins
+
+2- Setup Master Slave
+
+(i)Click on Build Executor Status->New Node -> Some Name with Permanent Agent-> #of executors(3) && Root Directory -> C:/Users/ketan.sethi/Jenkins(It'll work as Slave workspace) && Launch Method -> Launch agent via Java Web Start
+
+java -jar agent.jar -jnlpUrl http://localhost:8080/computer/DOCKER1/slave-agent.jnlp -secret b5d06587680ea31ea9c4545f1ff5dad1614a3d3cc0c842ac16cf3ae1a5fc6b7a -workDir "C:\Users\ketan.sethi\Jenkins"
+
+(ii)Also we don't want anything to execute on Master -> Go to Master -> Configure -> #executors -> 0 
+
+3- Add DockerHub credentials
+
+Jenkins->Credential->System->GLobal Credentials
+username - iamsethi786
+password- 
+id - dockerhub
+
+
 ########################Singleton browser########################
 the browser is singleton so everytime a same driver id is returned if use below anywhere and any no of time
 log.info("Driver ID is : " + world.driver.get("firefox").get().getDriver().toString());
