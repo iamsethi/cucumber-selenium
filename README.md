@@ -42,12 +42,16 @@ Make sure to traverse to project root folder
 (v)Setting up Selenium grid architecture
 Run command in terminal => docker-compose up will bring selenium grid infra at http://localhost:4444/
 
+docker-compose up --scale chrome=2 --scale firefox=2
+
+
 Linux - ifconfig
 WIndows - ipconfig
 
 Connect using VNC - 127.0.0.1:32775
+password is secret
 
-(vi)
+(vi)Also we can start from here after doing any change in code
 mvn clean package -DHUB_HOST=http://localhost:4444/wd/hub -DBROWSER=chrome
 imp. use localhost here because we are running locally
 
@@ -56,12 +60,23 @@ imp. use localhost here because we are running locally
 (viii)
 /usr/share/udemy # java -cp cucumber-selenium-docker.jar:cucumber-selenium-docker-tests.jar:libs/* -DHUB_HOST=http://192.168.1.7:4444/wd/hub -DBROWSER=chrome org.junit.runner.JUnitCore com.amazon.runner.RunnerTest
 
-imp .use use ipaddress here because we are running inside Container
+imp .use use ipaddress here because we are running inside Container 
 
+OR if we don't to do interactive terminal we can skip step iii and above code
 
+docker run -e HUB_HOST=http://192.168.1.7:4444/wd/hub -e BROWSER=chrome  iamsethi/cucumber-selenium-docker org.junit.runner.JUnitCore com.amazon.runner.RunnerTest
+
+Reading reports do volume mapping
+
+docker run -e HUB_HOST=http://192.168.1.7:4444/wd/hub -e BROWSER=firefox  -v C:/Users/ketan.sethi/git/cucumber/cucumber-selenium/output:/usr/share/udemy/target/ iamsethi/cucumber-selenium-docker org.junit.runner.JUnitCore com.amazon.runner.RunnerTest
 
 ########################java -cp -consider all the classes in jar file########################
 java -cp cucumber-selenium-docker.jar:cucumber-selenium-docker-tests.jar:libs/* mvn clean test
+
+Open Hyper-V Manager (Windows search : “Hyper-V …”)
+Go to Virtual Switch Manager on the right side.
+Go to DockerNAT then choose Connection type -> to External network -> #which interface you deside.
+Hope that help you, too.
 
 ########################Remove Docker Image########################
 docker rm -f containerId

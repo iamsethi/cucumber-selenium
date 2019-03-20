@@ -61,7 +61,7 @@ public class Hooks {
 	@After(order = 0)
 	public void afterScenario() {
 		if (world.config.isCLOSE_BROWSER()) {
-			world.driver.get("chrome").get().quitDriver();
+			world.driver.get(System.getProperty("BROWSER")).get().quitDriver();
 		}
 	}
 }
