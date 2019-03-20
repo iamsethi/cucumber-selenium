@@ -51,7 +51,7 @@ public class TwitterTimelineSteps {
 
 		RestUtilities.setEndPoint(STATUSES_USER_TIMELINE);
 		Response res = RestUtilities.getResponse(reqSpec, "get");
-		log.info("User Timeline default count is 20 is: " + res.prettyPrint());
+		//log.info("User Timeline default count is 20 is: " + res.prettyPrint());
 	}
 
 	@When("^a user read the user timeline with count as \"([^\"]*)\"$")
@@ -64,7 +64,7 @@ public class TwitterTimelineSteps {
 
 		RestUtilities.setEndPoint(STATUSES_USER_TIMELINE);
 		Response res = RestUtilities.getResponse(RestUtilities.createQueryParam(reqSpec, "count", count), "get");
-		log.info("User Timeline with count as " + count + " is: " + res.prettyPrint());
+		//log.info("User Timeline with count as " + count + " is: " + res.prettyPrint());
 		ArrayList<String> screenNameList = res.path("user.screen_name");
 		Assert.assertTrue(screenNameList.contains("iam_sethi"));
 	}
@@ -81,7 +81,7 @@ public class TwitterTimelineSteps {
 
 		RestUtilities.setEndPoint(STATUSES_MENTION_TIMELINE);
 		Response res = RestUtilities.getResponse(reqSpec, "get");
-		log.info("User Mention Timeline default count is 20 is: " + res.prettyPrint());
+		//log.info("User Mention Timeline default count is 20 is: " + res.prettyPrint());
 	}
 
 	@When("^a user read the mention timeline with count as \"([^\"]*)\"$")
@@ -94,7 +94,7 @@ public class TwitterTimelineSteps {
 
 		RestUtilities.setEndPoint(STATUSES_MENTION_TIMELINE);
 		Response res = RestUtilities.getResponse(RestUtilities.createQueryParam(reqSpec, "count", count), "get");
-		log.info("User Mention Timeline with count as " + count + " is: " + res.prettyPrint());
+	//	log.info("User Mention Timeline with count as " + count + " is: " + res.prettyPrint());
 	}
 
 }

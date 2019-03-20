@@ -67,7 +67,7 @@ public class TwitterWorkFlowSteps {
 					.response();
 		JsonPath jsPath = RestUtilities.getJsonPath(response);
 		String tweetId = jsPath.get("id_str");
-		log.info("The response.path i.e tweetId: " + tweetId);
+	//	log.info("The response.path i.e tweetId: " + tweetId);
 		world.scenarioContext.setContext(Context.TWEET_ID, tweetId);
 
 	}
@@ -84,7 +84,7 @@ public class TwitterWorkFlowSteps {
 		Response res = RestUtilities.getResponse(
 				RestUtilities.createQueryParam(reqSpec, "id", tweetId), "get");
 		String text = res.path("text");
-		log.info("The tweet text is: " + text);
+	//	log.info("The tweet text is: " + text);
 
 	}
 
@@ -102,7 +102,7 @@ public class TwitterWorkFlowSteps {
 	.then()
 		.spec(resSpec);
 		
-		log.info("Tweet deleted successfully");
+	//	log.info("Tweet deleted successfully");
 
 	}
 

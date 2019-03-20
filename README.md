@@ -51,20 +51,24 @@ WIndows - ipconfig
 Connect using VNC - 127.0.0.1:32775
 password is secret
 
-(vi)Also we can start from here after doing any change in code
-mvn clean package -DHUB_HOST=http://localhost:4444/wd/hub -DBROWSER=chrome
+ 
+########################(vi)Also we can start from here after doing any change in code########################
+mvn clean package -DHUB_HOST=http://localhost:4444/wd/hub -DBROWSER=chrome -Dcucumber.options="--tags @regression"
 imp. use localhost here because we are running locally
 
-(vii) Repeat Step(ii) and Step (iii)
+(vii) Repeat Step(ii) 
 
-(viii)
-/usr/share/udemy # java -cp cucumber-selenium-docker.jar:cucumber-selenium-docker-tests.jar:libs/* -DHUB_HOST=http://192.168.1.7:4444/wd/hub -DBROWSER=chrome org.junit.runner.JUnitCore com.amazon.runner.RunnerTest
+(viii)Repeat Step (iii) and then 
+/usr/share/udemy # java -cp cucumber-selenium-docker.jar:cucumber-selenium-docker-tests.jar:libs/* -DHUB_HOST=http://192.168.1.7:4444/wd/hub -DBROWSER=chrome -Dcucumber.options="--tags @regression" org.junit.runner.JUnitCore com.amazon.runner.RunnerTest
 
 imp .use use ipaddress here because we are running inside Container 
 
-OR if we don't to do interactive terminal we can skip step iii and above code
+OR 
 
-docker run -e HUB_HOST=http://192.168.1.7:4444/wd/hub -e BROWSER=chrome  iamsethi/cucumber-selenium-docker org.junit.runner.JUnitCore com.amazon.runner.RunnerTest
+'(viii)'
+if we don't to do interactive terminal 
+
+docker run -e HUB_HOST=http://192.168.1.7:4444/wd/hub -e BROWSER=chrome  -e TAG=@api iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest
 
 Reading reports do volume mapping
 
