@@ -15,7 +15,7 @@ public abstract class BasePage {
 	// Initiate the Page Factory and create as abstract class, so
 	// you can use for all the other Page Objects
 	public BasePage(World world) {
-		this.driver = world.driver.get("chrome").get().getDriver();
+		this.driver = world.driver.get(System.getProperty("BROWSER")).get().getDriver();
 		log.info("########Browser opened successfully########");
 		this.world = world;
 		PageFactory.initElements(driver, this);

@@ -1,0 +1,22 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome-debug
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+    ports:
+      - "127.0.0.1:32775:5900"  
+  firefox:
+    image: selenium/node-firefox-debug
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+    ports:
+      - "127.0.0.1:32776:5900"  

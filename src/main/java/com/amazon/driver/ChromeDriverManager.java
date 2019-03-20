@@ -1,45 +1,28 @@
 package com.amazon.driver;
 
-import java.io.File;
+import java.net.URL;
 
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class ChromeDriverManager extends DriverManager {
 
-	private ChromeDriverService service;
-
-	@Override
-	public void startService() {
-		if (null == service) {
-			try {
-				String driverPath = "src/test/resources/drivers/chromedriver";
-				if (System.getProperty("os.name").contains("Windows")) {
-					driverPath += ".exe";
-				}
-				service = new ChromeDriverService.Builder().usingDriverExecutable(new File(driverPath))
-						.usingAnyFreePort().build();
-				service.start();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	@Override
-	public void stopService() {
-		if (null != service && service.isRunning())
-			service.stop();
-	}
-
 	@Override
 	public void createDriver() {
+
 		DesiredCapabilities capabilities = DesiredCapabilities.chrome();
 		ChromeOptions options = new ChromeOptions();
 		options.merge(capabilities);
-		driver = new ChromeDriver(service, options);
+		try {
+			if (System.getProperty("HUB_HOST") != null) {
+				String host = System.getProperty("HUB_HOST");
+				driver = new RemoteWebDriver(new URL(host), capabilities);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

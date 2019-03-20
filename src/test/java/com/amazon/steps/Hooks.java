@@ -27,7 +27,7 @@ public class Hooks {
 	@Before
 	public void beforeScenario(Scenario scenario) throws IOException {
 		if (world.config.isMAXIMIZE_BROWSER() && (!scenario.getSourceTagNames().contains("@api"))) {
-			world.driver.get("chrome").get().getDriver().manage().window().maximize();
+			world.driver.get(System.getProperty("BROWSER")).get().getDriver().manage().window().maximize();
 		}
 	}
 
