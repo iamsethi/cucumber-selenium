@@ -1,5 +1,5 @@
 ########################Windows- Hyper V settings ,imp Restart docker after that########################
-Open Hyper-V Manager (Windows search : “Hyper-V …”)
+Open Hyper-V Manager (Windows search : ï¿½Hyper-V ï¿½ï¿½)
 Go to Virtual Switch Manager on the right side.
 Go to DockerNAT then choose Connection type -> to External network -> #which interface you deside.
 Restart docker
@@ -106,18 +106,18 @@ docker rm -f containerId
 docker rmi Image iamsethi/cucumber-selenium-docker
 docker system prune
 
-########################Jenkins########################
+########################Jenkins Create -  SELENIUM_DOCKERFILE_BUILDER_PUSHER ########################
 1.Setup Jenkins
-docker run -p 8080:8080 -p 50000:50000 -v "C:/Users/ketan.sethi/Jenkins:/var/jenkins_home" jenkins/jenkins:lts
+docker run -p 8080:8080 -p 50000:50000 -v "/home/ketan/git/Jenkins:/var/jenkins_home" jenkins/jenkins:lts
 [volume mapping is neccessary because if we delete the container then next it'll pick from C:/Users/ketan.sethi the previous configurations]
 
 Go to localhost:8080 and install suggested plugins
 
 2- Setup Master Slave
 
-(i)Click on Build Executor Status->New Node -> Some Name with Permanent Agent-> #of executors(3) && Root Directory -> C:/Users/ketan.sethi/Jenkins(It'll work as Slave workspace) && Launch Method -> Launch agent via Java Web Start
+(i)Click on Build Executor Status->New Node -> Some Name with Permanent Agent-> #of executors(3) && Root Directory -> /home/ketan/git/JenkinsSlave(It'll work as Slave workspace) && Launch Method -> Launch agent via Java Web Start
 
-java -jar agent.jar -jnlpUrl http://localhost:8080/computer/DOCKER1/slave-agent.jnlp -secret b5d06587680ea31ea9c4545f1ff5dad1614a3d3cc0c842ac16cf3ae1a5fc6b7a -workDir "C:\Users\ketan.sethi\Jenkins"
+java -jar agent.jar -jnlpUrl http://localhost:8080/computer/DOCKER1/slave-agent.jnlp -secret b5d06587680ea31ea9c4545f1ff5dad1614a3d3cc0c842ac16cf3ae1a5fc6b7a -workDir "/home/ketan/git/JenkinsSlave"
 
 (ii)Also we don't want anything to execute on Master -> Go to Master -> Configure -> #executors -> 0 
 
@@ -128,6 +128,6 @@ username - iamsethi786
 password- 
 id - dockerhub
 
-4. Create new job - Pipeline
+4. Create new job - Pipeline - named as SELENIUM_DOCKERFILE_BUILDER_PUSHER
 
 Definition - Pipeline script from SCM-> SCM Git ->Repo URL ->Additional Behaviour ->Clean before checkout->Script path ->Jenkinsfile->Apply and Save

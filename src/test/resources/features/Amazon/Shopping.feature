@@ -1,10 +1,10 @@
 @regression
 Feature: Login
 
-  @book
+  @toy
   Scenario Outline: Customer place an order by purchasing an item from search
     Given user is on Home Page
-    When he search for "A Practical Guide for Policy Analysis"
+    When he search for "Toys"
     And choose to buy the first item
     And moves to checkout from mini cart
     And I sign in on application
