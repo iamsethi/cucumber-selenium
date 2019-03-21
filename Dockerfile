@@ -12,6 +12,11 @@ ADD target/cucumber-selenium-docker.jar 				cucumber-selenium-docker.jar
 ADD target/libs											libs
 
 # in case of any other dependency like .csv / .json / .xls
+# please ADD that as well
+ADD src/main/resources									src/main/resources
+ADD src/test/resources									src/test/resources
+
+
 
 # ADD health check script
 #ADD healthcheck.sh                      			healthcheck.sh
