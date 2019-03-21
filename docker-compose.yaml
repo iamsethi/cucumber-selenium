@@ -24,4 +24,4 @@ services:
       - "127.0.0.1:32776:5900"  
     volumes:
       - /dev/shm:/dev/shm
-      - ./output/search-result:/usr/share/udemy/target      
+      - ./output:/usr/share/udemy/target           

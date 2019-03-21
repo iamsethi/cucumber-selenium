@@ -1,7 +1,10 @@
 package com.amazon.module;
 
+import org.openqa.selenium.WebDriver;
+
 import com.amazon.driver.ChromeDriverManager;
 import com.amazon.driver.DriverManager;
+import com.amazon.driver.DriverProvider;
 import com.amazon.driver.FirefoxDriverManager;
 import com.amazon.interfaces.Chrome;
 import com.amazon.interfaces.Firefox;
@@ -33,6 +36,11 @@ public class DriverModule extends AbstractModule {
 	@Firefox
 	public DriverManager getFirefoxDriverManager(@Named("Firefox") DriverManager driverManager) {
 		return driverManager;
+	}
+
+	@Provides
+	public WebDriver getDriver(DriverProvider driverProvider) {
+		return driverProvider.get(System.getProperty("BROWSER")).get().getDriver();
 	}
 
 }

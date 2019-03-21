@@ -7,6 +7,7 @@ import com.google.inject.Inject;
 import com.google.inject.Provider;
 
 public class DriverProvider {
+
 	@Inject
 	@Chrome
 	private Provider<DriverManager> chdriver;
@@ -35,4 +36,5 @@ public class DriverProvider {
 		DriverType parsedDriver = DriverType.valueOf(driver.toUpperCase());
 		return get(parsedDriver);
 	}
+
 }

@@ -9,6 +9,7 @@ import org.openqa.selenium.NoSuchWindowException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+import com.amazon.driver.DriverProvider;
 import com.amazon.world.World;
 import com.cucumber.listener.Reporter;
 import com.google.inject.Inject;
@@ -22,12 +23,14 @@ public class Hooks {
 
 	@Inject
 	private World world;
+	
+	@Inject
+	public DriverProvider driverProvider;
 
-	// Set the value of the properties in the support
 	@Before
 	public void beforeScenario(Scenario scenario) throws IOException {
 		if (world.config.isMAXIMIZE_BROWSER() && (!scenario.getSourceTagNames().contains("@api"))) {
-			world.driver.get(System.getProperty("BROWSER")).get().getDriver().manage().window().maximize();
+			world.driver.manage().window().maximize();
 		}
 	}
 
@@ -61,7 +64,7 @@ public class Hooks {
 	@After(order = 0)
 	public void afterScenario() {
 		if (world.config.isCLOSE_BROWSER()) {
-			world.driver.get(System.getProperty("BROWSER")).get().quitDriver();
+			driverProvider.get(System.getProperty("BROWSER")).get().quitDriver(); // don't just call quit
 		}
 	}
 }

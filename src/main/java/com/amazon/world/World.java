@@ -1,18 +1,19 @@
 package com.amazon.world;
 
+import org.openqa.selenium.WebDriver;
+
 import com.amazon.dataProviders.ConfigFileReader;
 import com.amazon.dataProviders.JsonDataReader;
 import com.amazon.databases.MYSQLJDBCConnection;
-import com.amazon.driver.DriverProvider;
 import com.google.inject.Inject;
 
 import cucumber.runtime.java.guice.ScenarioScoped;
 
 @ScenarioScoped
 public class World {
-	
+
 	@Inject
-	public DriverProvider driver;
+	public WebDriver driver;
 
 	@Inject
 	public JsonDataReader data;

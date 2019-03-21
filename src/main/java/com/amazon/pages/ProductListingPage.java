@@ -14,7 +14,7 @@ public class ProductListingPage extends BasePage {
 		super(world);
 	}
 
-	@FindBy(how = How.NAME, using = "submit.add-to-cart")
+	@FindBy(how = How.ID, using = "add-to-cart-button")
 	public WebElement btn_AddToCart;
 
 	@FindBy(how = How.XPATH, using = "(//a[@class='a-link-normal a-text-normal'])[2]")
