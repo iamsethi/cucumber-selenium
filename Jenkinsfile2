@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Run Test') {
             steps {
-                sh 'docker run -e HUB_HOST=http://192.168.1.7:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression iamsethi/cucumber-selenium  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest'
+                sh 'docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression iamsethi/cucumber-selenium  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest'
             }
         }
        
