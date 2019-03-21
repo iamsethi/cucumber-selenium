@@ -76,7 +76,8 @@ X-RapidAPI-Key
 38456a8097msh8b40ea11c2cad67p1f4175jsn50cae3bbd864
 
 ########################CLI####################################
-mvn clean install -Dcucumber.options="--tags @regression" -Dbrowser=chrome
+mvn clean install -Dcucumber.options="--tags @regression" -Dbrowser=chromemvn clean install -DHUB_HOST=http://localhost:4444/wd/hub -DBROWSER=chrome -Dcucumber.options="--tags @regression"
+
  mvn clean install -Denvironment=stage -Dcucumber.options="--tags @stage1" -Dusername=ketan -Dbrowser=chrome
  
 ########################Logger####################################
@@ -94,7 +95,7 @@ if (Browser.equals("chrome")) {
 It might look like an easy solution. But it is really NOT. When we have to start/stop the Driver Service ourselves, the code becomes significantly larger and very difficult to maintain
 
 SOLUTION - 
-Test classes, as the users, should not really care how the drivers are actually created. What it needs is just a WebDriver instance to execute the given test case. So we come up with our own abstract class – DriverManager – which test classes could use to get a driver instance from it and use them in their tests.
+Test classes, as the users, should not really care how the drivers are actually created. What it needs is just a WebDriver instance to execute the given test case. So we come up with our own abstract class ï¿½ DriverManager ï¿½ which test classes could use to get a driver instance from it and use them in their tests.
 
 SUMMARY - 
 By using Factory Pattern, we completely hide the creational logic of the browser / service instances to the test classes. If we get a new requirement to add a new browser, say PhantomJS, should not be a big deal. We just need to create a PhantomJSDriverManager which extends DriverManager. [Ofcourse you have to add PhantomJS in DriverType]
@@ -131,7 +132,7 @@ sudo systemctl status mysql
 ######################Setup MySQL############################
 sudo mysql
 create database db_example; -- Create the new database
-create user 'springuser'@'localhost' identified by 'ThePassword'; -- Creates the user
+create user 'springuser'@'localhost' identified by 'root'; -- Creates the user
 grant all on db_example.* to 'springuser'@'localhost'; -- Gives all the privileges to the new user on the 
 newly created database
  
@@ -143,11 +144,13 @@ SELECT * FROM TRADE_LETTER;
 
 exit
 
-###################DB Logic ###################################3
+expose localhost:3306 using ngrok
+
+###################DB Logic - ./ngrok tcp 3306 then 0.tcp.ngrok.io:14563 in sql connection ###################################3
 
 Properties configProps = Properties.load(getClass().getClassLoader().getResourceAsStream("myconfig.properties");
 Names.bindProperties(binder(), configProps);
-and voilà all your config is ready for injection:
+and voilï¿½ all your config is ready for injection:
 
 @Provides // use this to have nice creation methods in modules
 public Connection getDBConnection(@Named("dbConnection") String connectionStr,
