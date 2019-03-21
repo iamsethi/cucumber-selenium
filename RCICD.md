@@ -108,7 +108,8 @@ docker rmi Image iamsethi/cucumber-selenium-docker
 docker system prune
 
 ########################Jenkins Create -  SELENIUM_DOCKERFILE_BUILDER_PUSHER ########################
-Build means create a image using Dockerfile with some arbitrary name
+Create an Alpine image with volume mapped as $HOME/.m2:/root/.m2'
+Build means create a image using Dockerfile(code test classes from project in put into Alpine image) with some arbitrary name
 Pusher means push to https://cloud.docker.com/
 1.Setup Jenkins
 docker run -p 8080:8080 -p 50000:50000 -v "/home/ketan/git/Jenkins:/var/jenkins_home" jenkins/jenkins:lts
