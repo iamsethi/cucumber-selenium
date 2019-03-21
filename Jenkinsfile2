@@ -29,7 +29,6 @@ pipeline {
     {
    	archiveArtifacts artifacts: 'chrome/**', fingerprint: true
    	archiveArtifacts artifacts: 'firefox/**', fingerprint: true
-   	archiveArtifacts artifacts: 'api/**', fingerprint: true
     }
     
     }
