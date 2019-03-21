@@ -135,3 +135,7 @@ id - dockerhub
 4. Create new job - Pipeline - named as SELENIUM_DOCKERFILE_BUILDER_PUSHER
 
 Definition - Pipeline script from SCM-> SCM Git ->Repo URL ->Additional Behaviour ->Clean before checkout->Script path ->Jenkinsfile->Apply and Save
+
+
+Do not clean before checkout in Job configuration
+Manage Jenkins-> Script Console -> System.setProperty("hudson.model.DirectoryBrowserSupport.CSP", "") -> Run
