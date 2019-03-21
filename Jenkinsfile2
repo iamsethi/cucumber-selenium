@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Pull Latest Image') {
             steps {
-                sh 'docker pull iamsethi/cucumber-selenium'
+                sh 'docker pull iamsethi/cucumber-selenium-docker'
             }
         }
         stage('Run Test') {
             steps {
-                sh 'docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression iamsethi/cucumber-selenium  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest'
+                sh 'docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest'
             }
         }
        

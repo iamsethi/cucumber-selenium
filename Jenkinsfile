@@ -15,7 +15,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                	app = docker.build("iamsethi/cucumber-selenium")
+                	app = docker.build("iamsethi/cucumber-selenium-docker")
                 }
             }
         }
