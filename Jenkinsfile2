@@ -7,9 +7,17 @@ pipeline {
             }
         }
         stage('Run Test') {
-            steps {
-                sh 'docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest'
-            }
+            
+             parallel(
+               "chrome-tests":{
+                  sh 'docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest'
+
+               },
+               "firefox-tests":{
+                  sh 'docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=firefox  -e TAG=@regression iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest'
+
+               }               
+            ) 
         }
        
         }
