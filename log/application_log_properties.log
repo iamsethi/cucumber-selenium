@@ -1,4 +1,37 @@
 2019-03-21--INFO -com.amazon.pages.HomePage:User on this page
  2019-03-21--INFO -com.amazon.pages.HomePage:User on this page
  2019-03-21--INFO -com.amazon.pages.ProductListingPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.CartPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.SignInPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.CheckoutPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.CheckoutPage:User on this page
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Name with value : Brian ShippingAddress 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Address with value : 175 East Town St, Columbus 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_City with value : Ohio 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Phone with value : 09560146008 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Name with value : Brian CancelOrder 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Address with value : 175 East Town St, Columbus 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_City with value : Ohio 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Phone with value : 09560146008 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling btn_shipToThisAddress with value : click 
+ 2019-03-21--INFO -com.amazon.pages.CheckoutPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.CheckoutPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.HomePage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.HomePage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.ProductListingPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.CartPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.SignInPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.CheckoutPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.CheckoutPage:User on this page
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Name with value : Brian ShippingAddress 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Address with value : 175 East Town St, Columbus 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_City with value : Ohio 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Phone with value : 09560146008 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Name with value : Brian CancelOrder 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Address with value : 175 East Town St, Columbus 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_City with value : Ohio 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling tbx_Phone with value : 09560146008 
+ 2019-03-21--INFO -com.amazon.dataProviders.JsonDataReader:Filling btn_shipToThisAddress with value : click 
+ 2019-03-21--INFO -com.amazon.pages.CheckoutPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.CheckoutPage:User on this page
  

@@ -9,7 +9,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'mvn clean package -DHUB_HOST=http://192.168.1.10:4444/wd/hub -DBROWSER=chrome -Dcucumber.options="--tags @regression"'
+                sh 'mvn clean install -DskipTests
             }
         }
         stage('Build Image') {
