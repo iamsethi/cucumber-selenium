@@ -17,12 +17,7 @@ pipeline {
                "firefox-tests":{
                   sh 'docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=firefox  -e TAG=@regression -v ${WORKSPACE}/firefox:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest'
 
-               },
-               "api-tests":{
-                  sh 'docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e TAG=@api -v ${WORKSPACE}/api:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest'
-
-               }      
-                           
+               }               
             ) 
         }
         }
@@ -33,7 +28,6 @@ pipeline {
     {
    	archiveArtifacts artifacts: 'chrome/**', fingerprint: true
    	archiveArtifacts artifacts: 'firefox/**', fingerprint: true
-   	archiveArtifacts artifacts: 'api/**', fingerprint: true
     }
     
     }
