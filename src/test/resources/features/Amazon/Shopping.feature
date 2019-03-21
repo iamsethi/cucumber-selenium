@@ -1,6 +1,7 @@
+@regression
 Feature: Login
 
-  @1483359468
+  @book
   Scenario Outline: Customer place an order by purchasing an item from search
     Given user is on Home Page
     When he search for "A Practical Guide for Policy Analysis"
@@ -16,7 +17,7 @@ Feature: Login
       | customer |
       | Brian    |
 
-  @regression
+  @dress
   Scenario Outline: Customer place an order by purchasing an item from search
     Given user is on Home Page
     When he search for "dress"

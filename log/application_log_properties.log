@@ -1,6 +1,9 @@
 2019-03-21--INFO -com.amazon.pages.HomePage:User on this page
  2019-03-21--INFO -com.amazon.pages.HomePage:User on this page
  2019-03-21--INFO -com.amazon.pages.ProductListingPage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.HomePage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.HomePage:User on this page
+ 2019-03-21--INFO -com.amazon.pages.ProductListingPage:User on this page
  2019-03-21--INFO -com.amazon.pages.CartPage:User on this page
  2019-03-21--INFO -com.amazon.pages.SignInPage:User on this page
  2019-03-21--INFO -com.amazon.pages.CheckoutPage:User on this page

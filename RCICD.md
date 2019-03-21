@@ -48,8 +48,9 @@ Make sure to traverse to project root folder
 (v)Setting up Selenium grid architecture
 Run command in terminal => docker-compose up will bring selenium grid infra at http://localhost:4444/
 
-###docker-compose up -d --scale chrome=2 --scale firefox=2
+###docker-compose up -d
 docker-compose down
+docker-compose up -d --scale chrome=2 --scale firefox=2
 
 Linux - ifconfig
 WIndows - ipconfig
