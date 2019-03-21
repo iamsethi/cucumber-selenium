@@ -1,3 +1,4 @@
+sudo usermod -a -G docker $USER
 ########################Windows- Hyper V settings ,imp Restart docker after that########################
 Open Hyper-V Manager (Windows search : �Hyper-V ��)
 Go to Virtual Switch Manager on the right side.
@@ -107,6 +108,8 @@ docker rmi Image iamsethi/cucumber-selenium-docker
 docker system prune
 
 ########################Jenkins Create -  SELENIUM_DOCKERFILE_BUILDER_PUSHER ########################
+Build means create a image using Dockerfile with some arbitrary name
+Pusher means push to https://cloud.docker.com/
 1.Setup Jenkins
 docker run -p 8080:8080 -p 50000:50000 -v "/home/ketan/git/Jenkins:/var/jenkins_home" jenkins/jenkins:lts
 [volume mapping is neccessary because if we delete the container then next it'll pick from C:/Users/ketan.sethi the previous configurations]
