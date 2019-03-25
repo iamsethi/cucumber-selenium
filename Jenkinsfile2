@@ -11,7 +11,7 @@ pipeline {
                script {
                     def parallelTests = [:]  // creates empty map
                   	packageJson = readJSON file: ('tests.json')
-					parallelTests = packageJson.scripts
+					parallelTests = packageJson.scripts.chrome-tests
 					echo(parallelTests)
 					parallel parallelTests,failFast = true
                 }
