@@ -17,10 +17,11 @@ pipeline {
 					echo(listOfTests[i])				//key
 					key=(listOfTests[i])
 					echo(parallelTests[listOfTests[i]]) //value
-					value =parallelTests[listOfTests[i]]
-					parallelTests[key] = {
-					sh "$value"}
-						}					
+					test = listOfTests[i]
+					parallelTests[test] = {
+					sh "npm run $test"
+						}
+					}
 					parallel parallelTests,failFast = true
                 }
         }
