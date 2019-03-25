@@ -1,0 +1,7 @@
+{"scripts": {
+"chrome-tests": "docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest",
+
+"firefox-tests": "docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=firefox  -e TAG=@regression -v ${WORKSPACE}/firefox:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest"
+
+}
+}
