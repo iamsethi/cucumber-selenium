@@ -12,7 +12,7 @@ pipeline {
  					def parallelTests = [:]  // creates empty map
                   	packageJson = readJSON file: ('tests.json')
 					parallelTests = packageJson.scripts
-					parallelTests.each{ k, v -> echo("${k}:${v}") 
+					parallelTests.each{ k, v -> echo("${k}:${v}") }
 
                 def stringsToEcho = ["docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest", "b", "c", "d"]
 				// The map we'll store the parallel steps in before executing them.
