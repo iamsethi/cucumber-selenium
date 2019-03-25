@@ -26,7 +26,7 @@ pipeline {
     			["echoing ${k}" : transformIntoStep(v)]
 					}
 
-			parallel stepsForParallel
+			parallel stepsForParallel,failfast=true
                 }
         }
         }
