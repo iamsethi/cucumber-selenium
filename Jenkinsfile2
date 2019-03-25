@@ -9,19 +9,17 @@ pipeline {
         stage('Run Test') {
             steps {
                script {
-                    def tests = [:]
-                    packageJson = readJSON file: ('tests.json')
-					tests = packageJson.scripts
-					listOfTests = tests.keySet()
+                    def parallelTests = [:]
+                  	packageJson = readJSON file: ('package.json')
+					parallelTests = packageJson.scripts
+					listOfTests = parallelTests.keySet()
 
 					for (int i = 0 ; i < listOfTests.size() ; i++) {
 					test = listOfTests[i]
 					parallelTests[test] = {
-					echo "$test"
-					sh "$test"
+					sh "npm run $test"}
 						}
-					}
-                    parallel tests
+					parallel parallelTests
                 }
         }
         }
@@ -38,5 +36,7 @@ pipeline {
     
     
 }
+
+
 
 
