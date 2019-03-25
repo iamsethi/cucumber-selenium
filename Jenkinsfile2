@@ -10,20 +10,13 @@ pipeline {
             steps {
                script {
  					def parallelTests = [:]  // creates empty map
- 					def label
+ 					def label = [] 
                   	packageJson = readJSON file: ('tests.json')
 					parallelTests = packageJson.scripts
-					parallelTests.each{ k, v -> echo("${k}:${v}") }
-								
-					listOfTests = parallelTests.keySet()		
-					for (int i = 0 ; i < listOfTests.size() ; i++) {
-					label = listOfTests[i]
-					}
-					
-                def stringsToEcho = ["docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest", "b", "c", "d"]
-
-				def stepsForParallel =parallelTests.each{ k, v -> 
-    			["echoing ${k}" : transformIntoStep(v)]
+					parallelTests.each{ k, v -> label << k } 
+						
+				def stepsForParallel =label.collectEntries {
+    			["echoing ${it}" : transformIntoStep(it)]
 					}
 
 			parallel stepsForParallel,failfast=true
