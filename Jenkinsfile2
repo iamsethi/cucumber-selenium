@@ -19,6 +19,7 @@ pipeline {
 					parallelTests[test] = {
 					sh "$test"}
 						}
+					map.parallelTests = true
 					parallel parallelTests
                 }
         }
