@@ -9,10 +9,15 @@ pipeline {
         stage('Run Test') {
             steps {
                script {
+ 					def parallelTests = [:]  // creates empty map
+                  	packageJson = readJSON file: ('tests.json')
+					parallelTests = packageJson.scripts
+					
+
                 def stringsToEcho = ["docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest", "b", "c", "d"]
 				// The map we'll store the parallel steps in before executing them.
-				def stepsForParallel = stringsToEcho.collectEntries {
-    			["echoing ${it}" : transformIntoStep(it)]
+				def stepsForParallel = parallelTests.each{ k, v -> 
+    			["Running ${k}" : transformIntoStep(v)]
 					}
 				// Actually run the steps in parallel - parallel takes a map as an argument,	
 				// hence the above.
