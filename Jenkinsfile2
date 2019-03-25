@@ -11,7 +11,6 @@ pipeline {
                script {
                     def parallelTests = [:]  // creates empty map
                   	packageJson = readJSON file: ('tests.json')
-                  	parallelTests.failFast = true
 					parallelTests = packageJson.scripts
 					listOfTests = parallelTests.keySet()
 					for (int i = 0 ; i < listOfTests.size() ; i++) {
@@ -19,7 +18,7 @@ pipeline {
 					parallelTests[test] = {
 					sh "$test"}
 						}					
-					parallel parallelTests
+					parallel parallelTests,failFast = true
                 }
         }
         }
