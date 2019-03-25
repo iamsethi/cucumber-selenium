@@ -8,9 +8,21 @@ pipeline {
         }
         stage('Run Test') {
             steps {
-               scripts { 
-                   runTests()    
-               }
+               script {
+                    def tests = [:]
+                    packageJson = readJSON file: ('tests.json')
+					tests = packageJson.scripts
+					listOfTests = tests.keySet()
+
+					for (int i = 0 ; i < listOfTests.size() ; i++) {
+					test = listOfTests[i]
+					parallelTests[test] = {
+					echo "$test"
+					sh "$test"
+						}
+					}
+                    parallel tests
+                }
         }
         }
        
@@ -27,21 +39,4 @@ pipeline {
     
 }
 
-
-def runTests(){
-    
-packageJson = readJSON file: ('tests.json')
-tests = packageJson.scripts
-listOfTests = tests.keySet()
-
-for (int i = 0 ; i < listOfTests.size() ; i++) {
-test = listOfTests[i]
-parallelTests[test] = {
-echo "$test"
-sh "$test"
-}
-}
-
-parallel parallelTests
-}
 
