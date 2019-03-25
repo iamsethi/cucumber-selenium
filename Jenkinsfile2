@@ -12,7 +12,17 @@ pipeline {
                     def parallelTests = [:]  // creates empty map
                   	packageJson = readJSON file: ('tests.json')
 					parallelTests = packageJson.scripts
-					parallelTests.each{ k, v -> echo("${k}:${v}") }
+					parallelTests.each{ k, v -> 
+										
+					parallelTests["${k}"] = {
+      				node("${k}") {
+       					echo("${v}") // build steps that should happen on all nodes go here
+     						 }
+    					}			
+										
+					}		
+					
+					parallel parallelTests,failFast = true
                 }
         }
         }
