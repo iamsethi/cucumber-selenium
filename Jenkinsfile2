@@ -9,20 +9,30 @@ pipeline {
         stage('Run Test') {
             steps {
                script {
-                    def parallelTests = [:]  // creates empty map
-                    def builders = [:]
-                  	packageJson = readJSON file: ('tests.json')
-					parallelTests = packageJson.scripts
-					parallelTests.each{ k, v -> 					
-					builders["chrome-tests"] = {
-      				node("${k}") {
-       					echo("${v}") // build steps that should happen on all nodes go here
-     						 }
-    					}			
-										
-					}		
-					
-					parallel builders,failFast = true
+                def stringsToEcho = ["a", "b", "c", "d"]
+
+// The map we'll store the parallel steps in before executing them.
+def stepsForParallel = stringsToEcho.collectEntries {
+    ["echoing ${it}" : transformIntoStep(it)]
+}
+
+// Actually run the steps in parallel - parallel takes a map as an argument,
+// hence the above.
+parallel stepsForParallel
+
+// Take the string and echo it.
+def transformIntoStep(inputString) {
+    // We need to wrap what we return in a Groovy closure, or else it's invoked
+    // when this method is called, not when we pass it to parallel.
+    // To do this, you need to wrap the code below in { }, and either return
+    // that explicitly, or use { -> } syntax.
+    return {
+        node {
+            echo inputString
+        }
+    }
+}
+
                 }
         }
         }
