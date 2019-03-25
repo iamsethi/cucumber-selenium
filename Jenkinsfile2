@@ -17,8 +17,8 @@ pipeline {
 						
                 def stringsToEcho = ["docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest", "b", "c", "d"]
 				echo(label.join(","))
-				def stepsForParallel =label.join(",").collectEntries {
-    			["echoing ${it}" : transformIntoStep(it)]
+				def stepsForParallel =stringsToEcho.collectEntries {
+    			["Running chrome-tests" : transformIntoStep(it)]
 					}
 
 			parallel stepsForParallel,failfast=true
