@@ -21,7 +21,7 @@ pipeline {
 					}
 				// Actually run the steps in parallel - parallel takes a map as an argument,	
 				// hence the above.
-			parallel stepsForParallel
+			parallel stepsForParallel,failfast=true
                 }
         }
         }
