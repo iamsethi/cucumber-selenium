@@ -17,7 +17,7 @@ pipeline {
 					echo(listOfTests[i])				//keys
 					echo(parallelTests[listOfTests[i]]) //values
 					cmd = parallelTests[listOfTests[i]]
-					parallelTests[listOfTests[i]] = {
+					parallelTests['chrome-tests'] = {
 					sh "$cmd"}
 						}					
 					parallel parallelTests,failFast = true
