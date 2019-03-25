@@ -21,12 +21,11 @@ pipeline {
 					}
 					
                 def stringsToEcho = ["docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest", "b", "c", "d"]
-				// The map we'll store the parallel steps in before executing them.
-				def stepsForParallel = stringsToEcho.collectEntries {
-    			["echoing ${label}" : transformIntoStep(it)]
+
+				def stepsForParallel =parallelTests.each{ k, v -> 
+    			["echoing ${k}" : transformIntoStep(v)]
 					}
-				// Actually run the steps in parallel - parallel takes a map as an argument,	
-				// hence the above.
+
 			parallel stepsForParallel
                 }
         }
