@@ -20,7 +20,7 @@ pipeline {
 					def value =parallelTests[listOfTests[i]]
 					parallelTests["Run"] = {
 					 node 	{
-     				 sh "$value"
+     				 echo("$value")
       							}
 							}
 						}					
