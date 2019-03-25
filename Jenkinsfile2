@@ -19,7 +19,7 @@ pipeline {
 					parallelTests[test] = {
 					sh "$test"}
 						}
-					map.parallelTests = true
+					parallelTests.failFast = true
 					parallel parallelTests
                 }
         }
