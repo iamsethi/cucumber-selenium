@@ -18,7 +18,7 @@ pipeline {
 					def value =parallelTests[listOfTests[i]] //value
 					parallelTests[key] = {
 					 node(key) 	{
-     				 echo("$value")
+
       							}
 							}
 						}					
