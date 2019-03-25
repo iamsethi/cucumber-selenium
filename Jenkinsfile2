@@ -9,17 +9,16 @@ pipeline {
         stage('Run Test') {
             steps {
                script {
-                    def parallelTests = [:]
+                    def parallelTests = [:]  // creates empty map
                   	packageJson = readJSON file: ('tests.json')
+                  	parallelTests.failFast = true
 					parallelTests = packageJson.scripts
 					listOfTests = parallelTests.keySet()
-
 					for (int i = 0 ; i < listOfTests.size() ; i++) {
 					test = listOfTests[i]
 					parallelTests[test] = {
 					sh "$test"}
-						}
-					parallelTests.failFast = true
+						}					
 					parallel parallelTests
                 }
         }
