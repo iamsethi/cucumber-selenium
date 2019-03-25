@@ -16,6 +16,8 @@ pipeline {
 					for (int i = 0 ; i < listOfTests.size() ; i++) {
 					test = listOfTests[i]
 					parallelTests[test] = {
+					echo "echoing"
+					echo "$test"
 					sh "$test"}
 						}					
 					parallel parallelTests,failFast = true
