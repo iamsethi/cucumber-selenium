@@ -14,7 +14,7 @@ pipeline {
                   	packageJson = readJSON file: ('tests.json')
 					parallelTests = packageJson.scripts
 					parallelTests.each{ k, v -> 					
-					builders["${k}"] = {
+					builders["chrome-tests"] = {
       				node("${k}") {
        					echo("${v}") // build steps that should happen on all nodes go here
      						 }
