@@ -14,11 +14,12 @@ pipeline {
 					parallelTests = packageJson.scripts
 					listOfTests = parallelTests.keySet()
 					for (int i = 0 ; i < listOfTests.size() ; i++) {
-					echo(listOfTests[i])				//keys
-					echo(parallelTests[listOfTests[i]]) //values
-					cmd = parallelTests[listOfTests[i]]
-					parallelTests['chrome-tests'] = {
-					sh "$cmd"}
+					echo(listOfTests[i])				//key
+					key=(listOfTests[i])
+					echo(parallelTests[listOfTests[i]]) //value
+					value =parallelTests[listOfTests[i]]
+					parallelTests[key] = {
+					sh "$value"}
 						}					
 					parallel parallelTests,failFast = true
                 }
