@@ -10,27 +10,13 @@ pipeline {
             steps {
                script {
  					def parallelTests = [:]  // creates empty map
- 					def label
- 					def cmd
                   	packageJson = readJSON file: ('tests.json')
 					parallelTests = packageJson.scripts
-					parallelTests.each{ k, v -> echo("${k}:${v}") }
-								
-					listOfTests = parallelTests.keySet()		
-					for (int i = 0 ; i < listOfTests.size() ; i++) {
-					label = listOfTests[i]
-					cmd = parallelTests[listOfTests[i]]
-					}
-					
-                def stringsToEcho = ["docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest", "b", "c", "d"]
-				// The map we'll store the parallel steps in before executing them.
-				def stepsForParallel = parallelTests.collectEntries {
-    			["echoing ${it}" : transformIntoStep(it.value)]
-					}
-				// Actually run the steps in parallel - parallel takes a map as an argument,	
-				// hence the above.
-				parallel stepsForParallel
-                }
+					def stepsForParallel = parallelTests.collectEntries {
+    					["Running ${it.key}" : transformIntoStep(it.value)]
+							}
+					parallel stepsForParallel
+               	 }
         }
         }
        
@@ -47,16 +33,14 @@ pipeline {
     
 }
 
-
-// Take the string and echo it.
-def transformIntoStep(inputString) {
+def transformIntoStep(cmd) {
     // We need to wrap what we return in a Groovy closure, or else it's invoked
     // when this method is called, not when we pass it to parallel.
     // To do this, you need to wrap the code below in { }, and either return
     // that explicitly, or use { -> } syntax.
     return {
         node {
-            sh inputString
+            sh cmd
         }
     }
 }
