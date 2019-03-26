@@ -2,7 +2,7 @@ require 'cuke_slicer'
 require 'rake'
 
 task :run_scenario_count, [:tags, :env] do |task, args|
-  test_directory = Dir.pwd + 'src/test/resources/features'
+  test_directory = Dir.pwd + '/src/test/resources/features'
   tags = args[:tags].split(' ')
   included_tags = tags.select {|tag| tag.include?('@') && !tag.include?('~')}
   excluded_tags = tags.select {|tag| tag.include?('~@')}.map {|tag| tag.gsub('~','')}
