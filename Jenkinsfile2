@@ -44,10 +44,9 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
     echo "SUITE_RUN_ID: ${suiteRunID}\nPROFILE: ${profile}\nPIPELINE_ID: ${pipelineID}"
     def scenarioCountCmd = "bundle install && bundle exec rake run_scenario_count[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
     scenarioCount = sh(returnStdout: true, script: scenarioCountCmd)
-    //sh(returnStdout: true, script: "cd ALLSUITES/queuing && export PIPELINE_ID=${pipelineID} && export SUITE_RUN_ID=${suiteRunID} && export PROFILE=${profile} && bundle exec ruby enqueue_tests.rb ${directory} ${tags}")
-	echo("Scenario count is : ${scenarioCount}")
+
 	def stepsForParallel = [:]
-    def availablePods = Math.min(scenarioCount.toInteger(), maxPods.toInteger())
+    def availablePods = Math.min(scenarioCount, maxPods.toInteger())
             availablePods.times { int i ->
                 stepsForParallel["Run${typeOfRun}${i}"] = {
                     node {
