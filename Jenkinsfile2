@@ -46,7 +46,7 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
     scenarioCount = sh(returnStdout: true, script: scenarioCountCmd)
 
 	def stepsForParallel = [:]
-    def availablePods = Math.min(scenarioCount, maxPods.toInteger())
+    def availablePods = Math.min(scenarioCount.toInteger(), maxPods.toInteger())
             availablePods.times { int i ->
                 stepsForParallel["Run${typeOfRun}${i}"] = {
                     node {
