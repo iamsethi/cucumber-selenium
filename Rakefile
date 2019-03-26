@@ -16,6 +16,9 @@ task :run_scenario_count, [:tags, :env] do |task, args|
 
   args[:env].nil? ? env = 'preproduction' : env = args[:env]
   env = 'preproduction' if env == /preprod/
+  
+  File.open('tests_to_run.txt', 'w') { |file| file.puts found_tests }
 
-  puts tests_in_suite
+system('cucumber @tests_to_run.txt')
+  
 end

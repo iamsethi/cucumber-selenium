@@ -46,8 +46,22 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
     echo(scenarioCountCmd) 
     scenarioCount = sh(returnStdout: true, script: scenarioCountCmd)
     //sh(returnStdout: true, script: "cd ALLSUITES/queuing && export PIPELINE_ID=${pipelineID} && export SUITE_RUN_ID=${suiteRunID} && export PROFILE=${profile} && bundle exec ruby enqueue_tests.rb ${directory} ${tags}")
+	
+	def stepsForParallel = [:]
+    def availablePods = Math.min(scenarioCount.toInteger(), maxPods.toInteger())
+            availablePods.times { int i ->
+                stepsForParallel["Run${typeOfRun}${i}"] = {
+                    node {
+                        sh("cd /oz && git checkout ${env.BRANCH_NAME} && cd ALLSUITES/queuing && " +
+                                "bundle && " +
+                                "bundle exec ruby worker.rb ${directory}")
+                    }
+                }
+            }
+            parallel stepsForParallel
+        } 
+    
 
-}
 
 
 
