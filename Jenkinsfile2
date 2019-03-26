@@ -51,9 +51,7 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
             availablePods.times { int i ->
                 stepsForParallel["Run${typeOfRun}${i}"] = {
                     node {
-                        sh("cd /oz && git checkout ${env.BRANCH_NAME} && cd ALLSUITES/queuing && " +
-                                "bundle && " +
-                                "bundle exec ruby worker.rb ${directory}")
+
                     }
                 }
             }
