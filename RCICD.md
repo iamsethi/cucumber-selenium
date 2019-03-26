@@ -1,8 +1,16 @@
-sudo usermod -a -G docker $USER
-sudo for slave agent as well
-Pipeline Utility Steps Plugin
+###sudo usermod -a -G docker $USER
+###sudo for slave agent as well
+###Pipeline Utility Steps Plugin
 Navigate to jenkins > Manage jenkins > In-process Script Approval
 There was a pending command, which I had to approve
+
+sudo apt update
+sudo apt install ruby-full
+gem sources -a http://rubygems.org
+gem sources -r https://rubygems.org
+gem install cuke_slicer
+gem install rake
+
 ########################Windows- Hyper V settings ,imp Restart docker after that########################
 Open Hyper-V Manager (Windows search : �Hyper-V ��)
 Go to Virtual Switch Manager on the right side.

@@ -9,18 +9,21 @@ pipeline {
         stage('Run Test') {
             steps {
                script {
- 					def parallelTests = [:]  // creates empty map
-                  	packageJson = readJSON file: ('tests.json')
-					parallelTests = packageJson.scripts
-					def stepsForParallel = parallelTests.collectEntries {
-    					["Running ${it.key}" : transformIntoStep(it.value)]
-							}
-					parallel stepsForParallel
+ 					 def tags = '@regression'
+               		 runTests(tags, PIPELINE_ID, 'NB', PROFILE, DIRECTORY, MAX_PODS)                    
                	 }
         }
         }
        
         }
+        
+    environment {
+        MAX_PODS = 155
+        DIRECTORY = "cucumber-selenium"
+        PIPELINE_ID = "${env.BUILD_TAG}"
+        PROFILE = "${env.BRANCH_NAME}".drop(2)
+    }
+    
     post{
     always
     {
@@ -33,16 +36,17 @@ pipeline {
     
 }
 
-def transformIntoStep(cmd) {
-    // We need to wrap what we return in a Groovy closure, or else it's invoked
-    // when this method is called, not when we pass it to parallel.
-    // To do this, you need to wrap the code below in { }, and either return
-    // that explicitly, or use { -> } syntax.
-    return {
-        node {
-            sh cmd
-        }
-    }
+
+
+def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
+
+ 	def suiteRunID = "${pipelineID}-${typeOfRun}"
+    echo "SUITE_RUN_ID: ${suiteRunID}\nPROFILE: ${profile}\nPIPELINE_ID: ${pipelineID}"
+    def scenarioCountCmd = "cd ${directory} && bundle exec rake run_scenario_count[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
+    echo(scenarioCountCmd) 
+    scenarioCount = sh(returnStdout: true, script: scenarioCountCmd)
+    //sh(returnStdout: true, script: "cd ALLSUITES/queuing && export PIPELINE_ID=${pipelineID} && export SUITE_RUN_ID=${suiteRunID} && export PROFILE=${profile} && bundle exec ruby enqueue_tests.rb ${directory} ${tags}")
+
 }
 
 
