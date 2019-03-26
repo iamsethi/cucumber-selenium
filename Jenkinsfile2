@@ -42,7 +42,8 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
 
  	def suiteRunID = "${pipelineID}-${typeOfRun}"
     echo "SUITE_RUN_ID: ${suiteRunID}\nPROFILE: ${profile}\nPIPELINE_ID: ${pipelineID}"
-    def scenarioCountCmd = "bundle install && bundle exec rake run_scenario_count[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
+    sh("bundle install")
+    def scenarioCountCmd = "bundle exec rake run_scenario_count[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
     scenarioCount = sh(returnStdout: true, script: scenarioCountCmd)
 	echo("scenarioCount : ${scenarioCount}")
 	def stepsForParallel = [:]
