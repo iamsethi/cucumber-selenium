@@ -8,8 +8,8 @@ sudo apt update
 sudo apt install ruby-full
 gem sources -a http://rubygems.org
 gem sources -r https://rubygems.org
-gem install cuke_slicer
-gem install rake
+sudo gem install cuke_slicer
+sudo gem install rake
 
 ########################Windows- Hyper V settings ,imp Restart docker after that########################
 Open Hyper-V Manager (Windows search : �Hyper-V ��)

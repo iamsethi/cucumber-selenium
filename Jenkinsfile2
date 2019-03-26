@@ -21,7 +21,7 @@ pipeline {
         MAX_PODS = 155
         DIRECTORY = "cucumber-selenium"
         PIPELINE_ID = "${env.BUILD_TAG}"
-        PROFILE = "${env.BRANCH_NAME}".drop(2)
+        PROFILE = "${env.BRANCH_NAME}"
     }
     
     post{
