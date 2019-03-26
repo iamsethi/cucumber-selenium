@@ -11,6 +11,10 @@ gem sources -r https://rubygems.org
 sudo gem install cuke_slicer
 sudo gem install rake
 
+##################returnStdout##################
+scenarioCount = sh(returnStdout: true, script: scenarioCountCmd)
+syso in Rake file will be captured in above command
+
 ########################Windows- Hyper V settings ,imp Restart docker after that########################
 Open Hyper-V Manager (Windows search : �Hyper-V ��)
 Go to Virtual Switch Manager on the right side.
