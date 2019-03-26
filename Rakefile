@@ -1,3 +1,6 @@
+require 'cuke_slicer'
+require 'rake'
+
 task :run_scenario_count, [:tags, :env] do |task, args|
   test_directory = Dir.pwd + '/features'
   tags = args[:tags].split(' ')
