@@ -18,7 +18,5 @@ task :run_scenario_count, [:tags, :env] do |task, args|
   env = 'preproduction' if env == /preprod/
   
   File.open('tests_to_run.txt', 'w') { |file| file.puts found_tests }
-
-system('cucumber @tests_to_run.txt')
   
 end
