@@ -18,5 +18,5 @@ task :run_scenario_count, [:tags, :env] do |task, args|
   env = 'preproduction' if env == /preprod/
 
   puts found_tests
-  puts tests_in_suite
+  tests_in_suite
 end
