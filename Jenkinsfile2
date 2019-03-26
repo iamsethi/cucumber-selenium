@@ -42,7 +42,7 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
 
  	def suiteRunID = "${pipelineID}-${typeOfRun}"
     echo "SUITE_RUN_ID: ${suiteRunID}\nPROFILE: ${profile}\nPIPELINE_ID: ${pipelineID}"
-    def scenarioCountCmd = "cd ${directory} && bundle exec rake run_scenario_count[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
+    def scenarioCountCmd = "bundle exec rake run_scenario_count[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
     echo(scenarioCountCmd) 
     scenarioCount = sh(returnStdout: true, script: scenarioCountCmd)
     //sh(returnStdout: true, script: "cd ALLSUITES/queuing && export PIPELINE_ID=${pipelineID} && export SUITE_RUN_ID=${suiteRunID} && export PROFILE=${profile} && bundle exec ruby enqueue_tests.rb ${directory} ${tags}")
