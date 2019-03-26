@@ -1,6 +1,6 @@
 @api
 Feature: API Testing - Artist
-  Get Spotify catalog information about an artist’s albums. Optional parameters can be specified in the query string to filter and sort the response.
+  Get Spotify catalog information about an artist's albums. Optional parameters can be specified in the query string to filter and sort the response.
 
   @artist
   Scenario: Get an Artist's Albums
