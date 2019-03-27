@@ -25,4 +25,4 @@ ADD src/test/resources									src/test/resources
 # HUB_HOST
 
 
-ENTRYPOINT java -cp cucumber-selenium-docker.jar:cucumber-selenium-docker-tests.jar:libs/* -DHUB_HOST=$HUB_HOST -DBROWSER=$BROWSER -Dcucumber.options="--tags $TAG" org.junit.runner.JUnitCore com.amazon.runner.RunnerTest
+ENTRYPOINT java -cp cucumber-selenium-docker.jar:cucumber-selenium-docker-tests.jar:libs/* -DHUB_HOST=$HUB_HOST -DBROWSER=$BROWSER -Dcucumber.options="--features $TEST" org.junit.runner.JUnitCore com.amazon.runner.RunnerTest
