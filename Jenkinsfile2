@@ -56,7 +56,7 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
 	
 	def run_scenario_line = "bundle exec rake run_scenario_line[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
 	tests = sh(returnStdout: true, script: run_scenario_line)
-	run_scenario_line.each {
+	tests.each {
     echo("scenario_line ${it}")
 	}
 	
