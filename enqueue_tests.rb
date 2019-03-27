@@ -13,10 +13,10 @@ slicer.tags = tags
 tests = nil
 
 puts "Starting pwd for enqueue tests #{Dir.pwd}"
+#/home/ketan/git/JenkinsSlave/workspace/SELENIUM_DOCKER_RUNNER
 
-Dir.chdir("../../#{dir}") do
   tests = slicer.slice
-end
+
 
 commands = tests.map do |test|
   "bundle exec cucumber -p #{$world.configuration['TEST_ENVIRONMENT']} USE_GRID=true REMOTE_LOGGING=true CLOSE_BROWSER=true SUITE_RUN_ID=#{ENV['SUITE_RUN_ID']} PIPELINE_ID=#{ENV['PIPELINE_ID']} #{test}"
