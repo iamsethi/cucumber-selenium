@@ -31,6 +31,6 @@ task :run_scenario_line, [:tags, :env] do |task, args|
   commands = found_tests.map do |test|
   "#{test}"
 end
- commands.each { |command| puts command }
+ puts commands
   
 end
