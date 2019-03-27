@@ -3,7 +3,9 @@ pipeline {
     stages {
     
     	stage('bundleUpdate') {
+    	 steps {
             sh("bundle update")
+            }
             }
                 
         stage('Pull Latest Image') {
