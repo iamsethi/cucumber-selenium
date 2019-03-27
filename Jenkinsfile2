@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+    
+    	stage('bundleUpdate') {
+            sh("bundle update")
+            }
+                
         stage('Pull Latest Image') {
             steps {
                 sh 'docker pull iamsethi/cucumber-selenium-docker'
@@ -42,14 +47,19 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
 
  	def suiteRunID = "${pipelineID}-${typeOfRun}"
     echo "SUITE_RUN_ID: ${suiteRunID}\nPROFILE: ${profile}\nPIPELINE_ID: ${pipelineID}"
-    sh("bundle install")
-    def scenarioRunCmd = "bundle exec rake run_scenario_count[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
-    scenarioCmd = sh(returnStdout: true, script: scenarioRunCmd)
-	echo("scenarioCmd : ${scenarioCmd}")
-
+    
+    def scenarioCountCmd = "bundle exec rake run_scenario_count[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
+    scenarioCount = sh(returnStdout: true, script: scenarioCountCmd)
+	echo("scenarioCount : ${scenarioCount}")
+	
+	
+	tests = sh(returnStdout: true, script: run_scenario_line)
+	echo("scenario_line : ${tests}")
+	
+	
 	def stepsForParallel = [:]
- //   def availablePods = Math.min(scenarioCmd.count.toInteger(), maxPods.toInteger())
-            50.times { int i ->
+    def availablePods = Math.min(scenarioCount.toInteger(), maxPods.toInteger())
+            availablePods.times { int i ->
                 stepsForParallel["Run${typeOfRun}${i}"] = {
                     node {
 						sh("docker run -e HUB_HOST=http://192.168.1.3:4444/wd/hub -e BROWSER=chrome  -e FEATURE_FILE=./src/test/resources/features/Amazon/Shopping.feature:18 -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest")
