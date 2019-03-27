@@ -47,7 +47,7 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
     scenarioCount = sh(returnStdout: true, script: scenarioCountCmd)
 	echo("scenarioCount : ${scenarioCount}")
 	
-	sh(returnStdout: true, script: "cd ALLSUITES/queuing && export PIPELINE_ID=${pipelineID} && export SUITE_RUN_ID=${suiteRunID} && export PROFILE=${profile} && bundle exec ruby enqueue_tests.rb ${directory} ${tags}")
+	sh(returnStdout: true, script: "bundle exec ruby enqueue_tests.rb ${directory} ${tags}")
 	
 	
 	def stepsForParallel = [:]
