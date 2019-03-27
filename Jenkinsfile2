@@ -43,19 +43,19 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
  	def suiteRunID = "${pipelineID}-${typeOfRun}"
     echo "SUITE_RUN_ID: ${suiteRunID}\nPROFILE: ${profile}\nPIPELINE_ID: ${pipelineID}"
     sh("bundle install")
-    def scenarioCountCmd = "bundle exec rake run_scenario_count[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
-    scenarioCount = sh(returnStdout: true, script: scenarioCountCmd)
-	echo("scenarioCount : ${scenarioCount}")
+    def scenarioRunCmd = "bundle exec rake run_scenario_count[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
+    scenarioCmd = sh(returnStdout: true, script: scenarioRunCmd)
+	echo("scenarioCmd : ${scenarioCmd}")
 	
-	sh(returnStdout: true, script: "bundle exec ruby enqueue_tests.rb ${directory} ${tags}")
+	//sh(returnStdout: true, script: "bundle exec ruby enqueue_tests.rb ${directory} ${tags}")
 	
 	
 	def stepsForParallel = [:]
-    def availablePods = Math.min(scenarioCount.toInteger(), maxPods.toInteger())
+    def availablePods = Math.min(scenarioCmd.count.toInteger(), maxPods.toInteger())
             availablePods.times { int i ->
                 stepsForParallel["Run${typeOfRun}${i}"] = {
                     node {
-						sh("docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@regression -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest")
+						sh("docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  #{} -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest")
                     }
                 }
             }
