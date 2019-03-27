@@ -25,4 +25,4 @@ ADD src/test/resources									src/test/resources
 # HUB_HOST
 
 
-ENTRYPOINT java -cp cucumber-selenium-docker.jar:cucumber-selenium-docker-tests.jar:libs/* -DHUB_HOST=$HUB_HOST -DBROWSER=$BROWSER -Dcucumber.options="/home/ketan/git/JenkinsSlave/workspace/SELENIUM_DOCKER_RUNNER/src/test/resources/features/Amazon/Shopping.feature:18" org.junit.runner.JUnitCore com.amazon.runner.RunnerTest
+ENTRYPOINT java -cp cucumber-selenium-docker.jar:cucumber-selenium-docker-tests.jar:libs/* -DHUB_HOST=$HUB_HOST -DBROWSER=$BROWSER -Dcucumber.options="$FEATURE_FILE" org.junit.runner.JUnitCore com.amazon.runner.RunnerTest

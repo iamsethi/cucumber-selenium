@@ -52,7 +52,7 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
             2.times { int i ->
                 stepsForParallel["Run${typeOfRun}${i}"] = {
                     node {
-						sh("docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e FEATURE_FILE=/home/ketan/git/JenkinsSlave/workspace/SELENIUM_DOCKER_RUNNER/src/test/resources/features/Amazon/Shopping.feature:18 -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest")
+						sh("docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e FEATURE_FILE=./src/test/resources/features/Amazon/Shopping.feature:18 -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest")
                     }
                 }
             }
