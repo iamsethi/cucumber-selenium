@@ -19,7 +19,7 @@ puts "Starting pwd for enqueue tests #{Dir.pwd}"
 
 
 commands = tests.map do |test|
-  "docker run -e HUB_HOST=http://192.168.1.10:4444/wd/hub -e BROWSER=chrome  -e TAG=@#{test} -v ${WORKSPACE}/chrome:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest"
+  puts tests
 end
 
 commands.each { |command| puts command }
