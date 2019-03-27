@@ -28,6 +28,9 @@ task :run_scenario_line, [:tags, :env] do |task, args|
       included_tags: included_tags
   }
   found_tests = CukeSlicer::Slicer.new.slice(test_directory, filters, :file_line)
+  File.open('tests.json', 'w') { |file| file.puts found_tests }
+
+system('cucumber @tests_to_run.txt')
   puts found_tests
   
 end
