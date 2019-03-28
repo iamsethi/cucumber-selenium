@@ -1,3 +1,14 @@
+ ##################Rakefile##################
+  found_tests = CukeSlicer::Slicer.new.slice(test_directory, filters, :file_line)
+  found_tests.each do |test|
+    puts test.split(/features)[1] 
+        #/Amazon/Shopping.feature:34
+    #/home/ketan/git/JenkinsSlave/workspace/SELENIUM_DOCKER_RUNNER/src/test/resources/features/Amazon/Shopping.feature:34
+end
+
+     
+
+
 ###sudo usermod -a -G docker $USER
 ###sudo for slave agent as well
 ###Pipeline Utility Steps Plugin
