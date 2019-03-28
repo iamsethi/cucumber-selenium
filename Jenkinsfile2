@@ -58,7 +58,9 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
 	tests = sh(returnStdout: true, script: run_scenario_line)
 	def featureTest = [] //List
 	featureTest.add(tests)
-	
+	featureTest.each {
+    echo("Number ${it}")
+	}
 	def stepsForParallel = [:] //Map
     def availablePods = Math.min(scenarioCount.toInteger(), maxPods.toInteger())
             availablePods.times { int i ->
