@@ -1,5 +1,6 @@
 https://console.cloud.google.com/kubernetes
 
+https://github.com/zalando/zalenium/tree/f19f4c16d2ba986b4e519daae4752cf066836742/docs/k8s/gke
 
 Resource type	Capacity	Allocatable	Total requested
 CPU	68 CPU	67.76 CPU	3.18 CPU
