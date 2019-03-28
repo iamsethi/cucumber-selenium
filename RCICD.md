@@ -1,4 +1,30 @@
- ##################Rakefile##################
+https://console.cloud.google.com/kubernetes
+
+
+Resource type	Capacity	Allocatable	Total requested
+CPU	68 CPU	67.76 CPU	3.18 CPU
+
+
+gcloud container clusters get-credentials zalenium
+
+kubectl create clusterrolebinding iamsethi --clusterrole=cluster-admin --user=ketansethi786@gmail.com
+
+kubectl apply -f plumbing.yaml
+
+kubectl apply -f pv.yaml
+
+kubectl config set-context $(kubectl config current-context) --namespace=zalenium
+
+kubectl apply -f zalenium.yaml
+
+gcloud compute firewall-rules create zalenium --allow tcp:30000-32767
+
+kubectl delete -f pv.yaml && kubectl delete -f zalenium.yaml
+
+kubectl apply -f pv.yaml && kubectl apply -f zalenium.yaml
+
+
+##################Rakefile##################
   found_tests = CukeSlicer::Slicer.new.slice(test_directory, filters, :file_line)
   found_tests.each do |test|
     puts test.split(/features)[1] 
