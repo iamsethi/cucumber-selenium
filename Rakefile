@@ -29,7 +29,7 @@ task :run_scenario_line, [:tags, :env] do |task, args|
   }
   found_tests = CukeSlicer::Slicer.new.slice(test_directory, filters, :file_line)
   found_tests.each do |test|
-    puts test.split(/features)[1] 
+    puts test.split(/features/)[1] 
 end
 
 end
