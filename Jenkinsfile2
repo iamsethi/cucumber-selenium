@@ -34,7 +34,7 @@ pipeline {
     post{
     always
     {
-   	archiveArtifacts artifacts: 'testResult/**', fingerprint: true
+   	archiveArtifacts artifacts: 'testResult/E2E**', fingerprint: true
     }
     
     }
