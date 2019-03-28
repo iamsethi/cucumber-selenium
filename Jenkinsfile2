@@ -56,9 +56,8 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
 	
 	def run_scenario_line = "bundle exec rake run_scenario_line[\"${tags}\",${profile}] SUITE_RUN_ID=${suiteRunID}"
 	stdout = sh(returnStdout: true, script: run_scenario_line)
-	result = stdout.readLines()    
-    echo("Number ${result[0]}")
-       echo("Number ${result[1]}")
+	featureTest = stdout.readLines()    
+	
 	def stepsForParallel = [:] //Map
     def availablePods = Math.min(scenarioCount.toInteger(), maxPods.toInteger())
             availablePods.times { int i ->
