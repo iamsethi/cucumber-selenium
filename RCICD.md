@@ -1,9 +1,4 @@
-https://console.cloud.google.com/kubernetes
 
-https://github.com/zalando/zalenium/tree/f19f4c16d2ba986b4e519daae4752cf066836742/docs/k8s/gke
-
-Resource type	Capacity	Allocatable	Total requested
-CPU	68 CPU	67.76 CPU	3.18 CPU
 
 
 gcloud container clusters get-credentials zalenium
@@ -23,6 +18,11 @@ gcloud compute firewall-rules create zalenium --allow tcp:30000-32767
 kubectl delete -f pv.yaml && kubectl delete -f zalenium.yaml
 
 kubectl apply -f pv.yaml && kubectl apply -f zalenium.yaml
+
+
+How much memory does your machine have? 32 containers seems like quite a lot given you’re not using kubernetes. If you make the desiredContainers 10 does it work?
+
+I suspect if you want the scale you’re after you’re going to need to switch to kubernetes. When I run zalenium in kubernetes I assign 1Gb per selenium node and 1/2 a cpu which for you would be 32 GB ram and 16 cores. Which is a pretty large machine. And that’s ignoring zalenium itself and anything else running on the server.
 
 
 ##################Rakefile##################
