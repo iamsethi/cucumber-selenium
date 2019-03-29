@@ -4,6 +4,8 @@ secret must on the moon.yaml
 
 
 ##################Zalenium on GKE##################
+64 vCPU and 305GB
+
         - '--desiredContainers'
         - '100'
         - '--maxDockerSeleniumContainers'
