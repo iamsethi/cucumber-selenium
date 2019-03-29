@@ -25,7 +25,7 @@ pipeline {
         }
         
     environment {
-        MAX_PODS = 155
+        MAX_PODS = 100
         DIRECTORY = "cucumber-selenium"
         PIPELINE_ID = "${env.BUILD_TAG}"
         PROFILE = "${env.BRANCH_NAME}"
@@ -61,7 +61,7 @@ def runTests(tags, pipelineID, typeOfRun, profile, directory, maxPods) {
             availablePods.times { int i ->
                 stepsForParallel["Run${typeOfRun}${i}"] = {
                     node {
-						sh("docker run -e HUB_HOST=http://35.234.55.48:30487/wd/hub -e BROWSER=chrome  -e FEATURE_FILE=/src/test/resources/features${featureTest[i]} -v ${WORKSPACE}/testResult/E2E${i}:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest")
+						sh("docker run -e HUB_HOST=http://35.234.55.48:30487/wd/hub -e BROWSER=chrome  -e FEATURE_FILE=${PWD}/src/test/resources/features${featureTest[i]} -v ${WORKSPACE}/testResult/E2E${i}:/usr/share/udemy/target iamsethi/cucumber-selenium-docker  org.junit.runner.JUnitCore com.amazon.runner.RunnerTest")
                     }
                 }
             }
