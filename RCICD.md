@@ -1,3 +1,7 @@
+
+chmod 777 /var/run/docker.sock
+
+
 ##################Selenoid on GKE##################
 secret must on the moon.yaml
 
