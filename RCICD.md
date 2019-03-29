@@ -4,12 +4,18 @@ secret must on the moon.yaml
 
 
 ##################Zalenium on GKE##################
-64 vCPU and 305GB
-
+64 vCPU and 300 GB
         - '--desiredContainers'
         - '100'
         - '--maxDockerSeleniumContainers'
         - '100'
+        
+                - name: ZALENIUM_KUBERNETES_CPU_REQUEST
+          value: 500m
+        - name: ZALENIUM_KUBERNETES_CPU_LIMIT
+          value: 1Gi
+        - name: ZALENIUM_KUBERNETES_MEMORY_REQUEST
+          value: 1Gi
         
 https://console.cloud.google.com/kubernetes
 
