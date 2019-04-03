@@ -1,11 +1,26 @@
+########################Mistakes made today########################
+1.Make agent {        
+        node {         
+            label 'DOCKER1'
+        }
+    }
+    
+    
+2.sh 'mvn clean package -DskipTests' #we don't to run any test in building docker file
+  
+3.HUB_HOST=http://192.168.1.2:4444/wd/hub  #make sure we are using ip here bec it is called from docker
 
-chmod 777 /var/run/docker.sock
+4.-e FEATURE_FILE=./src/test/resources/features${featureTest[i]} #make sure we are passing commands like
+docker run -e HUB_HOST=http://192.168.1.2:4444/wd/hub -e BROWSER=chrome -e FEATURE_FILE=./src/test/resources/features/Centric/Search.feature:4 iamsethi/cucumber-example-docker
 
+
+########################Ubuntu laptop as server########################
+ssh -R 80:localhost:4444 serveo.net
+
+########################chmod 777 /var/run/docker.sock########################
 
 ##################Selenoid on GKE##################
 secret must on the moon.yaml
-
-
 
 ##################Zalenium on GKE##################
 64 vCPU and 300 GB
@@ -52,9 +67,6 @@ I suspect if you want the scale you’re after you’re going to need to switch 
         #/Amazon/Shopping.feature:34
     #/home/ketan/git/JenkinsSlave/workspace/SELENIUM_DOCKER_RUNNER/src/test/resources/features/Amazon/Shopping.feature:34
 end
-
-     
-
 
 ###sudo usermod -a -G docker $USER
 ###sudo for slave agent as well
