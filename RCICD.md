@@ -1,3 +1,19 @@
+########################Quick setup########################
+
+docker run -p 8080:8080 -p 50000:50000 -v "/home/ketan/git/Jenkins:/var/jenkins_home" jenkins/jenkins:lts
+
+sudo java -jar agent.jar -jnlpUrl http://localhost:8080/computer/DOCKER1/slave-agent.jnlp -secret 8a58c91c134ec3984d0f9a0303787d5091a34a44623cb4b28e19b9f377fcfa26 -workDir "/home/ketan/git/JenkinsSlave1"
+
+./ngrok http 8080
+
+
+   docker run --rm -ti --name zalenium -p 4444:4444 \
+      -v /var/run/docker.sock:/var/run/docker.sock \
+      -v /tmp/videos:/home/seluser/videos \
+      --privileged dosel/zalenium start --desiredContainers 5 --maxDockerSeleniumContainers 5 --videoRecordingEnabled false
+
+ssh -R 80:localhost:4444 serveo.net
+
 ########################Mistakes made today########################
 1.Make agent {        
         node {         
